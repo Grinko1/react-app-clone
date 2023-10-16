@@ -46,7 +46,7 @@ export function ListBox(props: ListBoxProps) {
       as={'div'}
       className={classNames(cls.ListBox, {}, [className])}
       disabled={readonly}>
-      <HListBox.Button className={cls.trigger}>
+      <HListBox.Button className={cls.trigger} as='div'>
         <Button disabled={readonly}>{value ?? defaultValue}</Button>
       </HListBox.Button>
       <HListBox.Options className={classNames(cls.options, {}, optionClasses)}>
