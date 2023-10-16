@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Button } from 'shared/ui/Button/Button';
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
 import { Input } from 'shared/ui/Input/Input';
 import { ListBox } from 'shared/ui/ListBox/ListBox';
 import { Page } from 'widgets/Page/Page';
@@ -19,12 +21,30 @@ const MainPage = () => {
     { value: 'Benedict Kessler',content: 'Benedict Kessler', disabled: true },
     { value: 'Katelyn Rohan',content: 'Katelyn Rohan', disabled: false },
   ];
+  const items =   [  {
+      disabled:false,
+      content:'first item',
+
+    },
+    {
+      disabled:true,
+      content:'second item',
+
+    },
+      {
+      disabled:false,
+      content:'third item',
+
+    },
+  ]
 
   return (
     <Page>
       {t('Главная страница')}
       <div> </div>
       <ListBox items={people} value='Kenton Towne' onChange={(value:string)=>{}} />
+      <div></div>
+      <Dropdown items={items} trigger={<Button>Open</Button>}/>
     </Page>
   );
 };

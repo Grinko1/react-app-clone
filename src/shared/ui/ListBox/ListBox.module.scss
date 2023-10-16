@@ -1,6 +1,5 @@
 .ListBox {
   position: relative;
-//   min-width: 150px;
 }
 .trigger {
   background: none;
@@ -14,7 +13,6 @@
   z-index: 10000;
   background: var(--card-bg);
   border-radius: 12px;
-  // box-shadow: 4px 4px 4px var(--card-bg);
   cursor: pointer;
 
 }
@@ -33,4 +31,24 @@
 }
 .disabled {
   opacity: 0.7;
+}
+
+.optionsBottomLeft {
+  top: 100%;
+  right: 0;
+}
+
+.optionsBottomRight {
+  top: 100%;
+  left: 0;
+}
+
+.optionsTopRight {
+  bottom: 100%;
+  left: 0;
+}
+
+.optionsTopLeft {
+  right: 0;
+  bottom: 100%;
 }
