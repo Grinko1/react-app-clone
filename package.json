@@ -95,6 +95,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@reduxjs/toolkit": "^1.8.0",
+    "@testing-library/user-event": "^14.5.1",
     "axios": "^0.26.1",
     "concurrently": "^7.0.0",
     "i18next": "^21.6.11",

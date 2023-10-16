@@ -6,7 +6,8 @@ import { Text, TextSize } from 'shared/ui/Text/Text';
 import { ArticleList, ArticleView } from 'entities/Article';
 import { VStack } from 'shared/ui/Stack';
 import { ArticleListItemSkeleton } from 'entities/Article/ui/ArticleListItem/ArticleListItemSkeleton';
-import { useArticleRecommendationsList } from '../../api/articleRecommendatinsApi';
+import { useArticleRecommendationsList } from 'features/articleRecommendationsList/api/articleRecommendatinsApi';
+
 
 interface ArticleRecommendationsListProps {
   className?: string;
@@ -23,7 +24,7 @@ export const ArticleRecommendationsList = memo((props: ArticleRecommendationsLis
     <VStack gap='8' className={classNames(cls.ArticleRecommendationsList, {}, [className])}>
       <Text size={TextSize.L} className={cls.commentTitle} title={t('Рекомендуем')} />
 
-      {!isLoading && (
+      {!isLoading && articles && (
         <ArticleList
           articles={articles}
           isLoading={false}
