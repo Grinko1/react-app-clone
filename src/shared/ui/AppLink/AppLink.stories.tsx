@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { AppLink, AppLinkTheme } from './AppLink';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'shared/AppLink',
@@ -22,7 +23,7 @@ Primary.args = {
     children: 'Text',
     theme: AppLinkTheme.PRIMARY,
 };
-
+Primary.decorators =[ StoreDecorator({})]
 export const Secondary = Template.bind({});
 Secondary.args = {
     children: 'Text',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Flex , FlexProps} from './Flex';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 // import {} from '../../model/types/article';
 
@@ -25,7 +26,7 @@ children:(
 ),
 direction:'row',
 }
-
+Row.decorators =[ StoreDecorator({})]
 export const Column = Template.bind({})
 Column.args = {
 children:(

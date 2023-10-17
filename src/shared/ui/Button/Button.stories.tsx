@@ -4,6 +4,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
 import { Button, ButtonSize, ButtonTheme } from './Button';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'shared/Button',
@@ -19,7 +20,7 @@ export const Primary = Template.bind({});
 Primary.args = {
     children: 'Text',
 };
-
+Primary.decorators =[ StoreDecorator({})]
 export const Clear = Template.bind({});
 Clear.args = {
     children: 'Text',

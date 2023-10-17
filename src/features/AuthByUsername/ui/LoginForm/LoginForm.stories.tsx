@@ -31,3 +31,4 @@ Loading.args = {};
 Loading.decorators = [StoreDecorator({
     loginForm: { isLoading: true },
 })];
+Primary.decorators =[ StoreDecorator({})]

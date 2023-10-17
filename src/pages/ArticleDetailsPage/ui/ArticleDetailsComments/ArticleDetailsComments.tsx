@@ -1,4 +1,4 @@
-import { memo, useCallback } from 'react';
+import { Suspense, memo, useCallback } from 'react';
 import cls from './ArticleDetailsComments.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
@@ -11,19 +11,18 @@ import { addCommentForArticle } from '../../model/services/addCommentForArticle/
 import { useTranslation } from 'react-i18next';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { Loader } from 'shared/ui/Loader/Loader';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
-  id:string
+  id: string;
 }
 
 export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCommentsProps) => {
-
   const dispatch = useDispatch();
   const { t } = useTranslation('article-details');
   const comments = useSelector(getArticleComments.selectAll);
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
-
 
   useInitialEffect(() => {
     dispatch(fetchCommentsByArticleId(id));
@@ -38,7 +37,10 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
   return (
     <div className={classNames(cls.ArticleDetailsComments, {}, [className])}>
       <Text size={TextSize.L} className={cls.commentTitle} title={t('Комментарии')} />
-      <AddCommentForm onSendComment={onSendComment} />
+      <Suspense fallback={<Loader />}>
+        <AddCommentForm onSendComment={onSendComment} />
+      </Suspense>
+
       <CommentList isLoading={commentsIsLoading} comments={comments} />
     </div>
   );

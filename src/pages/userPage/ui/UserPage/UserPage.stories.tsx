@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { UserPage } from './UserPage';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'pages/UserPage',
@@ -17,3 +18,4 @@ export const Normal = Template.bind({});
 Normal.args = {
    
 };
+Normal.decorators =[ StoreDecorator({})]

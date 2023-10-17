@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { action } from '@storybook/addon-actions';
 import { Tabs } from './Tabs';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'shared/Tabs',
@@ -33,3 +34,5 @@ Normal.args = {
     value: 'tab 2',
     onTabClick: action('onTabClick'),
 };
+
+Normal.decorators =[ StoreDecorator({})]

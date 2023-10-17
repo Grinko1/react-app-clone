@@ -22,9 +22,7 @@ interface ProfilePageProps {
 const ProfilePage = ({ className }: ProfilePageProps) => {
   const { id } = useParams();
   const { t } = useTranslation('profile');
-  if (!id) {
-    return <Text title={t('Профиль не найден')} />;
-  }
+
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
       <Page className={classNames('', {}, [className])}>

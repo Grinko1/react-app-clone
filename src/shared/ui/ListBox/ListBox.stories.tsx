@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { ListBox } from './ListBox';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
   title: 'shared/ListBox',
@@ -38,7 +39,7 @@ Normal.args = {
   ],
   value: 'first',
 };
-
+Normal.decorators =[ StoreDecorator({})]
 export const TopLeft = Template.bind({});
 TopLeft.args = {
   items: [

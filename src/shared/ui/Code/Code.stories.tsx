@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Code } from './Code';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'shared/Code',
@@ -27,3 +28,5 @@ Normal.args = {
         + '\n'
         + 'export const Normal = Template.bind({});',
 };
+
+Normal.decorators =[ StoreDecorator({})]

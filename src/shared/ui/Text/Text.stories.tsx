@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Text, TextSize, TextTheme } from 'shared/ui/Text/Text';
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator';
 import { Theme } from 'app/providers/ThemeProvider';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'shared/Text',
@@ -19,7 +20,7 @@ Primary.args = {
     title: 'Title lorem ipsun',
     text: 'Description Description Description Description',
 };
-
+Primary.decorators =[ StoreDecorator({})]
 export const Error = Template.bind({});
 Error.args = {
     title: 'Title lorem ipsun',

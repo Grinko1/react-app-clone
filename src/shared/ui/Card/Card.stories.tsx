@@ -3,6 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { Text } from 'shared/ui/Text/Text';
 import { Card } from './Card';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'shared/Card',
@@ -18,3 +19,4 @@ export const Normal = Template.bind({});
 Normal.args = {
     children: <Text title="test" text="text text" />,
 };
+Normal.decorators =[ StoreDecorator({})]

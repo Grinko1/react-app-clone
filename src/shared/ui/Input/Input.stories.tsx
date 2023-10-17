@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Input } from 'shared/ui/Input/Input';
+import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator';
 
 export default {
     title: 'shared/Input',
@@ -17,3 +18,4 @@ Primary.args = {
     placeholder: 'Type text',
     value: '123123',
 };
+Primary.decorators =[ StoreDecorator({})]
