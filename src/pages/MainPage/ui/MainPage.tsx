@@ -45,6 +45,7 @@ const MainPage = () => {
       <ListBox items={people} value='Kenton Towne' onChange={(value:string)=>{}} />
       <div></div>
       <Dropdown items={items} trigger={<Button>Open</Button>}/>
+      <span>new text sjdfnwjefn</span>
     </Page>
   );
 };
