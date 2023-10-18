@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from 'shared/ui/Button/Button';
-import { Dropdown } from 'shared/ui/Dropdown/Dropdown';
+import { Dropdown } from 'shared/ui/Popups/components/Dropdown/Dropdown';
 import { Input } from 'shared/ui/Input/Input';
-import { ListBox } from 'shared/ui/ListBox/ListBox';
+import { ListBox } from 'shared/ui/Popups/components/ListBox/ListBox';
 import { Page } from 'widgets/Page/Page';
+
 
 const MainPage = () => {
   const { t } = useTranslation();
@@ -44,8 +45,9 @@ const MainPage = () => {
       <div> </div>
       <ListBox items={people} value='Kenton Towne' onChange={(value:string)=>{}} />
       <div></div>
-      <Dropdown items={items} trigger={<Button>Open</Button>}/>
+      <Dropdown items={items} trigger={<Button>Dropdown</Button>}/>
       <span>new text sjdfnwjefn</span>
+      {/* <MyPopover  trigger={<Button>Open</Button>}/> */}
     </Page>
   );
 };

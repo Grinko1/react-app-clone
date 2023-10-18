@@ -2,8 +2,10 @@ import { Fragment, ReactNode, useState } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import cls from './ListBox.module.scss';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { Button } from '../Button/Button';
+import { Button } from '../../../Button/Button';
 import { DropDownDirection } from 'shared/types/ui';
+import { mapDirectionClass } from '../../styles/consts';
+import popupCls from '../../styles/popup.module.scss'
 
 export interface listBoxItem {
   value: string;
@@ -20,12 +22,6 @@ interface ListBoxProps {
   direction?: DropDownDirection;
 }
 
-const mapDirectionClass: Record<DropDownDirection, string> = {
-  'bottom right': cls.optionsBottomRight,
-  'bottom left': cls.optionsBottomLeft,
-  'top right': cls.optionsTopRight,
-  'top left': cls.optionsTopLeft,
-};
 export function ListBox(props: ListBoxProps) {
   const {
     items,
@@ -44,9 +40,9 @@ export function ListBox(props: ListBoxProps) {
       value={value}
       onChange={onChange}
       as={'div'}
-      className={classNames(cls.ListBox, {}, [className])}
+      className={classNames(cls.ListBox, {}, [className,popupCls.popup])}
       disabled={readonly}>
-      <HListBox.Button className={cls.trigger} as='div'>
+      <HListBox.Button className={popupCls.trigger} as='div'>
         <Button disabled={readonly}>{value ?? defaultValue}</Button>
       </HListBox.Button>
       <HListBox.Options className={classNames(cls.options, {}, optionClasses)}>
@@ -59,9 +55,9 @@ export function ListBox(props: ListBoxProps) {
             {({ active, selected }) => (
               <li
                 className={classNames(cls.item, {
-                  [cls.active]: active,
-                  [cls.selected]: selected,
-                  [cls.disabled]: item.disabled,
+                  [popupCls.active]: active,
+                  [popupCls.selected]: selected,
+                  [popupCls.disabled]: item.disabled,
                 })}>
                 {item.content}
               </li>
