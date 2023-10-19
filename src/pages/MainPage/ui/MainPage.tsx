@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from 'shared/ui/Button/Button';
-import { Dropdown } from 'shared/ui/Popups/components/Dropdown/Dropdown';
-import { Input } from 'shared/ui/Input/Input';
-import { ListBox } from 'shared/ui/Popups/components/ListBox/ListBox';
-import { Page } from 'widgets/Page/Page';
+import { Button } from '@/shared/ui/Button/Button';
+import { Dropdown } from '@/shared/ui/Popups/components/Dropdown/Dropdown';
+import { Input } from '@/shared/ui/Input/Input';
+import { ListBox } from '@/shared/ui/Popups/components/ListBox/ListBox';
+import { Page } from '@/widgets/Page/Page';
 
 
 const MainPage = () => {

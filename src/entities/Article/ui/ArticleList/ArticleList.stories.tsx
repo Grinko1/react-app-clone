@@ -3,7 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 
 import { ArticleList } from './ArticleList';
 import { Article, } from '../../model/types/article';
-import { ArticleView } from 'entities/Article/model/consts/consts';
+import { ArticleView } from '@/entities/Article/model/consts/consts';
 
 export default {
     title: 'entities/Article/ArticleList',
