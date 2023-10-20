@@ -10,6 +10,7 @@ import { useParams } from 'react-router-dom';
 import { profileReducer } from '@/features/editableProfileCard/model/slice/profileSlice';
 import { Text } from '@/shared/ui/Text/Text';
 import { useTranslation } from 'react-i18next';
+import { ProfileRating } from '@/features/profileRating';
 
 const reducers: ReducersList = {
   profile: profileReducer,
@@ -28,6 +29,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
       <Page className={classNames('', {}, [className])}>
         <VStack gap='16' max>
           <EditableProfileCard id={id} />
+          <ProfileRating profileId={id ?? ''}/>
         </VStack>
       </Page>
     </DynamicModuleLoader>
