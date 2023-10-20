@@ -15,16 +15,20 @@ interface AvatarDropdownProps {
 
 export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
   const { className } = props;
+  
   const { t } = useTranslation();
   const isAdmin = useSelector(isUserAdmin);
   const isManager = useSelector(isUserManager);
   const authData = useSelector(getUserAuthData);
 
   const dispatch = useAppDispatch();
+
   const isAdminPanelAvaible = isAdmin || isManager;
+
   const onLogout = useCallback(() => {
     dispatch(userActions.logout());
   }, [dispatch]);
+
   if (!authData) {
     return null;
   }

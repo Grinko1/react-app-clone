@@ -5,6 +5,8 @@ import { Dropdown } from '@/shared/ui/Popups/components/Dropdown/Dropdown';
 import { Input } from '@/shared/ui/Input/Input';
 import { ListBox } from '@/shared/ui/Popups/components/ListBox/ListBox';
 import { Page } from '@/widgets/Page/Page';
+import { StarRating } from '@/shared/ui/StarRating/StarRating';
+import { Rating } from '@/entities/Rating';
 
 
 const MainPage = () => {
@@ -25,6 +27,7 @@ const MainPage = () => {
   const items =   [  {
       disabled:false,
       content:'first item',
+      href:'grfge'
 
     },
     {
@@ -42,6 +45,7 @@ const MainPage = () => {
   return (
     <Page>
       {t('Главная страница')}
+    <Rating title='Как вам статья?' feedbackTitle='Оставьте отзыв' hasFeedback />
       <div> </div>
       <ListBox items={people} value='Kenton Towne' onChange={(value:string)=>{}} />
       <div></div>

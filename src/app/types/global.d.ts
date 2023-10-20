@@ -10,10 +10,10 @@ declare module '*.png';
 declare module '*.jpg';
 declare module '*.jpeg';
 declare module '*.svg' {
-    // import React from 'react';
+    import React from 'react';
 
-    // const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
-    // export default SVG;
+    const SVG: React.VFC<React.SVGProps<SVGSVGElement>>;
+    export default SVG;
 }
 
 declare const __IS_DEV__: boolean;
@@ -27,9 +27,9 @@ type DeepPartial<T> = T extends object ? {
 type OptionalRecord<K extends keyof any, T> = {
     [P in K]?: T;
 };
-declare module '*.svg' {
-  const content: React.FC<React.SVGProps<SVGElement>>
-  export default content
-}
+// declare module '*.svg' {
+//   const content: React.FC<React.SVGProps<SVGElement>>
+//   export default content
+// }
 
 /// <reference types="vite-plugin-svgr/client" />
