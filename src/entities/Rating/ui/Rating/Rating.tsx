@@ -1,6 +1,4 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import cls from './Rating.module.scss';
 import { memo, useCallback, useState } from 'react';
 import { Card } from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
@@ -19,12 +17,13 @@ interface RatingProps {
   hasFeedback?: boolean;
   onCancel?: (starsCount: number) => void;
   onAccept?: (starsCount: number, feedback?: string) => void;
+  rate?:number
 }
 
 export const Rating = memo((props: RatingProps) => {
-  const { className, title, feedbackTitle, hasFeedback, onAccept, onCancel } = props;
+  const { className, title, feedbackTitle,rate=0, hasFeedback, onAccept, onCancel } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [starsCount, setStarsCount] = useState(0);
+  const [starsCount, setStarsCount] = useState(rate);
   const [feedback, setFeedback] = useState('');
   const { t } = useTranslation();
 
@@ -52,17 +51,16 @@ export const Rating = memo((props: RatingProps) => {
 
   const modalContent = (
     <>
-      {' '}
       <Text title={feedbackTitle} />
       <Input placeholder={t('Ваш отзыв')} value={feedback} onChange={setFeedback} />
     </>
   );
 
   return (
-    <Card className={classNames(cls.Rating, {}, [className])}>
-      <VStack align='center' gap='8'>
-        <Text title={title} />
-        <StarRating size={40} onSelect={onSelectStars} />
+    <Card className={className}>
+      <VStack align='center' gap='8' max>
+        <Text title={starsCount ? t('Спасибо за оценку'):  title} />
+        <StarRating selectedStars={rate} size={40} onSelect={onSelectStars} />
       </VStack>
       <BrowserView>
         <Modal isOpen={isModalOpen} lazy>
