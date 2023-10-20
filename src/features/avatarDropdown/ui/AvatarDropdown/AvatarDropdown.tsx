@@ -3,11 +3,11 @@ import { useTranslation } from 'react-i18next';
 import cls from './AvatarDropdown.module.scss';
 import { memo, useCallback } from 'react';
 import { Dropdown } from '@/shared/ui/Popups';
-import { RoutePath } from '@/shared/config/routeConfig/routeConfig';
 import { getUserAuthData, isUserAdmin, isUserManager, userActions } from '@/entities/User';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
+import { RoutePath } from '@/app/providers/router/config/routeConfig';
 
 interface AvatarDropdownProps {
   className?: string;

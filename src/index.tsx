@@ -23,6 +23,7 @@ root.render(
     </BrowserRouter>
 );
 
+//react 17
 // render(
 //     <BrowserRouter>
 //         <StoreProvider>
