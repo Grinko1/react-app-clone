@@ -10,7 +10,6 @@ interface RateArticleArgs extends IRating {
   articleId: string;
 }
 
-
 const articleRatingApi = rtkApi.injectEndpoints({
   endpoints: (build) => ({
     getRating: build.query<IRating[], GerArticleRatingArgs>({
@@ -22,15 +21,15 @@ const articleRatingApi = rtkApi.injectEndpoints({
         },
       }),
     }),
-    rateArticle: build.mutation<void,RateArticleArgs >({
+    rateArticle: build.mutation<void, RateArticleArgs >({
       query: (arg) => ({
         url: '/article-ratings',
         method: 'POST',
-        body:arg
+        body: arg,
       }),
     }),
   }),
 });
 
 export const useGetArticleRating = articleRatingApi.useGetRatingQuery;
-export const useRateArticle = articleRatingApi.useRateArticleMutation
+export const useRateArticle = articleRatingApi.useRateArticleMutation;

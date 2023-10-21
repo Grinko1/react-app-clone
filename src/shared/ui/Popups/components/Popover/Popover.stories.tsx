@@ -19,16 +19,16 @@ export default {
     ),
   ],
 } as ComponentMeta<typeof Popover>;
-//@ts-ignore
+// @ts-ignore
 const Template: ComponentStory<typeof Popover> = (args) => <Popover {...args} />;
 
 export const Normal = Template.bind({});
 Normal.args = {
-    trigger:<Button>Open</Button>,
-  children: 'dsfsdfsddsfsd'
+  trigger: <Button>Open</Button>,
+  children: 'dsfsdfsddsfsd',
 
 };
-Normal.decorators =[ StoreDecorator({})]
+Normal.decorators = [StoreDecorator({})];
 // export const TopLeft = Template.bind({});
 // TopLeft.args = {
 //   items: [

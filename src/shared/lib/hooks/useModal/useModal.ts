@@ -1,5 +1,6 @@
-import { useTheme } from '@/app/providers/ThemeProvider';
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
+import {
+  MutableRefObject, useCallback, useEffect, useRef, useState,
+} from 'react';
 
 interface useModalProps {
   onClose?: () => void;
@@ -28,7 +29,6 @@ export function useModal({ onClose, isOpen, animationDelay }: useModalProps) {
     }
   }, [onClose, animationDelay]);
 
-
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -52,6 +52,6 @@ export function useModal({ onClose, isOpen, animationDelay }: useModalProps) {
     isClosing,
     isMounted,
     close,
-    
-  }
+
+  };
 }

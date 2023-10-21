@@ -7,12 +7,12 @@ interface AdminPanelPageProps {
     className?: string;
 }
 
- const AdminPanelPage = memo(({ className }: AdminPanelPageProps) => {
+const AdminPanelPage = memo(({ className }: AdminPanelPageProps) => {
   return (
     <Page className={classNames(style.AdminPanelPage, {}, [className])}>
-        admin panel
+      admin panel
     </Page>
   );
 });
 
-export default AdminPanelPage
+export default AdminPanelPage;

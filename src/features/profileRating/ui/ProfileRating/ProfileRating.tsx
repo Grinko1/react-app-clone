@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
-import { Rating } from '@/entities/Rating';
 import { useSelector } from 'react-redux';
+import { Rating } from '@/entities/Rating';
 import { getUserAuthData } from '@/entities/User';
 import { useGetProfileRating, useRateProfile } from '../../api/profileRatingApi';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
@@ -12,13 +12,13 @@ interface ProfileRatingProps {
 }
 
 export const ProfileRating = memo((props: ProfileRatingProps) => {
-  const { className, profileId='' } = props;
+  const { className, profileId = '' } = props;
   const { t } = useTranslation('profile');
 
   const authData = useSelector(getUserAuthData);
   const [rateProfileMutation] = useRateProfile();
   const { data, isLoading } = useGetProfileRating({
-    profileId: profileId,
+    profileId,
     userId: authData?.id || '',
   });
   const rating = data?.[0];
@@ -53,7 +53,7 @@ export const ProfileRating = memo((props: ProfileRatingProps) => {
   );
 
   if (isLoading) {
-    return <Skeleton width={'100%'} height={120} />;
+    return <Skeleton width="100%" height={120} />;
   }
 
   return (

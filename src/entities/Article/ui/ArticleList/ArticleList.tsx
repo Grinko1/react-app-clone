@@ -1,11 +1,11 @@
 import { HTMLAttributeAnchorTarget, memo } from 'react';
+import { useTranslation } from 'react-i18next';
 import style from './ArticleList.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Article } from '@/entities/Article/model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from '@/shared/ui/Text/Text';
-import { useTranslation } from 'react-i18next';
 import { ArticleView } from '@/entities/Article/model/consts/consts';
 
 interface ArticleListProps {
@@ -23,9 +23,11 @@ const getSkeletons = (view: ArticleView) => {
 };
 
 export const ArticleList = memo((props: ArticleListProps) => {
-  const { className, articles, isLoading, view = ArticleView.SMALL, target } = props;
+  const {
+    className, articles, isLoading, view = ArticleView.SMALL, target,
+  } = props;
 
-  const {t} =useTranslation()
+  const { t } = useTranslation();
   const renderArticle = (article: Article) => {
     return (
       <ArticleListItem
@@ -37,24 +39,20 @@ export const ArticleList = memo((props: ArticleListProps) => {
       />
     );
   };
-  if(!isLoading && !articles.length){
+  if (!isLoading && !articles.length) {
     return (
-        <div className={classNames(style.ArticleList, {}, [className, style[view]])}>
-          <Text title={t('Статьи не найдены')} size={TextSize.L} />
-        </div>
-    )
-      
+      <div className={classNames(style.ArticleList, {}, [className, style[view]])}>
+        <Text title={t('Статьи не найдены')} size={TextSize.L} />
+      </div>
+    );
   }
   return (
     <div className={classNames(style.ArticleList, {}, [className, style[view]])}>
-      {!!articles.length ? articles.map(renderArticle) : null}
-       { isLoading&& getSkeletons(view)}
+      {articles.length ? articles.map(renderArticle) : null}
+      { isLoading && getSkeletons(view)}
     </div>
   );
 });
-
-
-
 
 // import { classNames } from 'shared/lib/classNames/classNames';
 // import { useTranslation } from 'react-i18next';

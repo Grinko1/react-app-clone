@@ -18,7 +18,7 @@ export default {
     ),
   ],
 } as ComponentMeta<typeof ListBox>;
-//@ts-ignore
+// @ts-ignore
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
 
 export const Normal = Template.bind({});
@@ -39,7 +39,7 @@ Normal.args = {
   ],
   value: 'first',
 };
-Normal.decorators =[ StoreDecorator({})]
+Normal.decorators = [StoreDecorator({})];
 export const TopLeft = Template.bind({});
 TopLeft.args = {
   items: [

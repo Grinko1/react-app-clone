@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 import { Rating } from '@/entities/Rating';
 import { useGetArticleRating, useRateArticle } from '../../api/articleRatingApi/articleRatingApi';
-import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { Skeleton } from '@/shared/ui/Skeleton/Skeleton';
 
@@ -11,13 +11,13 @@ export interface ArticleRatingProps {
   articleId: string;
 }
 
- const ArticleRating = memo((props: ArticleRatingProps) => {
+const ArticleRating = memo((props: ArticleRatingProps) => {
   const { className, articleId } = props;
   const { t } = useTranslation();
   const authData = useSelector(getUserAuthData);
   const [rateArticleMutation] = useRateArticle();
   const { data, isLoading } = useGetArticleRating({
-    articleId: articleId,
+    articleId,
     userId: authData?.id || '',
   });
   const rating = data?.[0];
@@ -52,7 +52,7 @@ export interface ArticleRatingProps {
   );
 
   if (isLoading) {
-    return <Skeleton width={'100%'} height={120} />;
+    return <Skeleton width="100%" height={120} />;
   }
   return (
     <Rating
@@ -67,4 +67,4 @@ export interface ArticleRatingProps {
   );
 });
 
-export default ArticleRating
+export default ArticleRating;

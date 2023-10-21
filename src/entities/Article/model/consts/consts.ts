@@ -1,4 +1,3 @@
-
 export enum ArticleSortField {
     VIEWS = 'views',
     TITLE = 'title',
@@ -10,7 +9,6 @@ export enum ArticleBlockType {
     IMAGE = 'IMAGE',
     TEXT = 'TEXT',
 }
-
 
 export enum ArticleType {
     ALL = 'ALL',

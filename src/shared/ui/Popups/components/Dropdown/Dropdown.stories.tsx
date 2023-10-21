@@ -10,7 +10,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-    decorators: [
+  decorators: [
     (Story) => (
       <div style={{ padding: '100px' }}>
         <Story />
@@ -23,44 +23,44 @@ const Template: ComponentStory<typeof Dropdown> = (args) => <Dropdown {...args} 
 
 export const Normal = Template.bind({});
 Normal.args = {
-  trigger:<Button>Open</Button>,
-  items:[
+  trigger: <Button>Open</Button>,
+  items: [
     {
-      disabled:false,
-      content:'first item',
+      disabled: false,
+      content: 'first item',
 
     },
     {
-      disabled:true,
-      content:'second item',
+      disabled: true,
+      content: 'second item',
 
     },
-      {
-      disabled:false,
-      content:'third item',
+    {
+      disabled: false,
+      content: 'third item',
 
     },
-  ]
+  ],
 };
-Normal.decorators =[ StoreDecorator({})]
+Normal.decorators = [StoreDecorator({})];
 
 export const TopLeft = Template.bind({});
 TopLeft.args = {
-  trigger:<Button>Open</Button>,
+  trigger: <Button>Open</Button>,
   items: [
-     {
-      disabled:false,
-      content:'first item',
+    {
+      disabled: false,
+      content: 'first item',
 
     },
     {
-      disabled:true,
-      content:'second item',
+      disabled: true,
+      content: 'second item',
 
     },
-      {
-      disabled:false,
-      content:'third item',
+    {
+      disabled: false,
+      content: 'third item',
 
     },
   ],
@@ -70,21 +70,21 @@ TopLeft.args = {
 
 export const TopRight = Template.bind({});
 TopRight.args = {
-  trigger:<Button>Open</Button>,
+  trigger: <Button>Open</Button>,
   items: [
     {
-      disabled:false,
-      content:'first item',
+      disabled: false,
+      content: 'first item',
 
     },
     {
-      disabled:true,
-      content:'second item',
+      disabled: true,
+      content: 'second item',
 
     },
-      {
-      disabled:false,
-      content:'third item',
+    {
+      disabled: false,
+      content: 'third item',
 
     },
   ],
@@ -92,21 +92,21 @@ TopRight.args = {
 };
 export const BottomLeft = Template.bind({});
 BottomLeft.args = {
-  trigger:<Button>Open</Button>,
+  trigger: <Button>Open</Button>,
   items: [
     {
-      disabled:false,
-      content:'first item',
+      disabled: false,
+      content: 'first item',
 
     },
     {
-      disabled:true,
-      content:'second item',
+      disabled: true,
+      content: 'second item',
 
     },
-      {
-      disabled:false,
-      content:'third item',
+    {
+      disabled: false,
+      content: 'third item',
 
     },
   ],
@@ -115,21 +115,21 @@ BottomLeft.args = {
 };
 export const BottomRight = Template.bind({});
 BottomRight.args = {
-  trigger:<Button>Open</Button>,
+  trigger: <Button>Open</Button>,
   items: [
     {
-      disabled:false,
-      content:'first item',
+      disabled: false,
+      content: 'first item',
 
     },
     {
-      disabled:true,
-      content:'second item',
+      disabled: true,
+      content: 'second item',
 
     },
-      {
-      disabled:false,
-      content:'third item',
+    {
+      disabled: false,
+      content: 'third item',
 
     },
   ],

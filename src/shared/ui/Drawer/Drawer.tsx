@@ -1,5 +1,7 @@
-import { classNames, Mods } from '@/shared/lib/classNames/classNames';
-import React, { memo, ReactNode, useCallback, useEffect } from 'react';
+import React, {
+  memo, ReactNode, useCallback, useEffect,
+} from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
 import { Overlay } from '../Overlay/Overlay';
@@ -22,7 +24,9 @@ export const DrawerContent = memo((props: DrawerProps) => {
 
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
   const { theme } = useTheme();
-  const { className, children, onClose, isOpen, lazy } = props;
+  const {
+    className, children, onClose, isOpen, lazy,
+  } = props;
 
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false });
@@ -44,7 +48,9 @@ export const DrawerContent = memo((props: DrawerProps) => {
   };
 
   const bind = Gesture.useDrag(
-    ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
+    ({
+      last, velocity: [, vy], direction: [, dy], movement: [, my], cancel,
+    }) => {
       if (my < -70) cancel();
 
       if (last) {
@@ -78,7 +84,8 @@ export const DrawerContent = memo((props: DrawerProps) => {
         <Spring.a.div
           className={cls.sheet}
           style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
-          {...bind()}>
+          {...bind()}
+        >
           {children}
         </Spring.a.div>
       </div>

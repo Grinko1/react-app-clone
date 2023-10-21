@@ -1,7 +1,6 @@
 import { User } from '@/entities/User';
 import { ArticleBlockType, ArticleType } from '../consts/consts';
 
-
 export interface ArticleBlockBase {
     id: string;
     type: ArticleBlockType;
@@ -25,8 +24,6 @@ export interface ArticleTextBlock extends ArticleBlockBase {
 }
 
 export type ArticleBlock = ArticleCodeBlock | ArticleImageBlock | ArticleTextBlock;
-
-
 
 export interface Article {
     id: string;

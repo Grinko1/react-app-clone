@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { memo, useCallback, useState } from 'react';
+import { BrowserView, MobileView } from 'react-device-detect';
 import { Card } from '@/shared/ui/Card/Card';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Text } from '@/shared/ui/Text/Text';
@@ -7,7 +8,6 @@ import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Modal } from '@/shared/ui/Modal/Modal';
 import { Input } from '@/shared/ui/Input/Input';
 import { Button, ButtonSize, ButtonTheme } from '@/shared/ui/Button/Button';
-import { BrowserView, MobileView } from 'react-device-detect';
 import { Drawer } from '@/shared/ui/Drawer/Drawer';
 
 interface RatingProps {
@@ -21,7 +21,9 @@ interface RatingProps {
 }
 
 export const Rating = memo((props: RatingProps) => {
-  const { className, title, feedbackTitle,rate=0, hasFeedback, onAccept, onCancel } = props;
+  const {
+    className, title, feedbackTitle, rate = 0, hasFeedback, onAccept, onCancel,
+  } = props;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [starsCount, setStarsCount] = useState(rate);
   const [feedback, setFeedback] = useState('');
@@ -58,26 +60,29 @@ export const Rating = memo((props: RatingProps) => {
 
   return (
     <Card className={className} max>
-      <VStack align='center' gap='8' max>
-        <Text title={starsCount ? t('Спасибо за оценку'):  title} />
+      <VStack align="center" gap="8" max>
+        <Text title={starsCount ? t('Спасибо за оценку') : title} />
         <StarRating selectedStars={rate} size={40} onSelect={onSelectStars} />
       </VStack>
       <BrowserView>
         <Modal isOpen={isModalOpen} lazy>
-          <VStack gap='32' max>
+          <VStack gap="32" max>
             {modalContent}
-            <HStack max gap='16' justify='end'>
+            <HStack max gap="16" justify="end">
               <Button theme={ButtonTheme.OUTLINE_RED} onClick={cancelHandle}>
                 {t('Закрыть')}
               </Button>
-              <Button onClick={acceptHandler}> {t('Отправить')}</Button>
+              <Button onClick={acceptHandler}>
+                {' '}
+                {t('Отправить')}
+              </Button>
             </HStack>
           </VStack>
         </Modal>
       </BrowserView>
       <MobileView>
         <Drawer isOpen={isModalOpen} lazy onClose={cancelHandle}>
-          <VStack gap='32' max>
+          <VStack gap="32" max>
             {modalContent}
             <Button onClick={acceptHandler} fullWidth size={ButtonSize.L}>
               {t('Отправить')}

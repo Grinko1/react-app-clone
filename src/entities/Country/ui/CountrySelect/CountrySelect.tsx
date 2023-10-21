@@ -1,7 +1,6 @@
-import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTranslation } from 'react-i18next';
-import { Select } from '@/shared/ui/Select/Select';
 import { memo, useCallback } from 'react';
+import { classNames } from '@/shared/lib/classNames/classNames';
 import { Country } from '../../model/types/country';
 import { HStack } from '@/shared/ui/Stack';
 import { ListBox } from '@/shared/ui/Popups';
@@ -22,7 +21,9 @@ const options = [
 ];
 
 export const CountrySelect = memo(
-  ({ className, value, onChange, readonly }: CountrySelectProps) => {
+  ({
+    className, value, onChange, readonly,
+  }: CountrySelectProps) => {
     const { t } = useTranslation();
 
     const onChangeHandler = useCallback(
@@ -33,7 +34,7 @@ export const CountrySelect = memo(
     );
 
     return (
-      <HStack align='center' gap='8'>
+      <HStack align="center" gap="8">
         <span>{t('Укажите страну')}</span>
         <ListBox
           className={classNames('', {}, [className])}
@@ -41,17 +42,17 @@ export const CountrySelect = memo(
           value={value}
           onChange={onChangeHandler}
           readonly={readonly}
-          direction='top right'
+          direction="top right"
         />
       </HStack>
-      // <Select
-      //     className={classNames('', {}, [className])}
-      //     label={t('Укажите страну')}
-      //     options={options}
-      //     value={value}
-      //     onChange={onChangeHandler}
-      //     readonly={readonly}
-      // />
+    // <Select
+    //     className={classNames('', {}, [className])}
+    //     label={t('Укажите страну')}
+    //     options={options}
+    //     value={value}
+    //     onChange={onChangeHandler}
+    //     readonly={readonly}
+    // />
     );
   },
 );

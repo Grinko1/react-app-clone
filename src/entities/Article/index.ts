@@ -1,11 +1,11 @@
-export { ArticleView ,ArticleSortField, ArticleType} from './model/consts/consts';
+export { ArticleView, ArticleSortField, ArticleType } from './model/consts/consts';
 
 export {
-    ArticleDetails,
+  ArticleDetails,
 } from './ui/ArticleDetails/ArticleDetails';
 
 export type {
-    Article
+  Article,
 } from './model/types/article';
 export type { ArticleDetailsSchema } from './model/types/articleDetailsSchema';
 
