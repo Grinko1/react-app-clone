@@ -15,7 +15,6 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks', 'unused-imports'],
   rules: {
-
     'unused-imports/no-unused-imports': 'error',
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.jsx', '.tsx'] }],
     'import/no-unresolved': 'off',
@@ -44,6 +43,7 @@ module.exports = {
           'border',
           'direction',
           'gap',
+          'fullscreen',
         ],
       },
     ],
