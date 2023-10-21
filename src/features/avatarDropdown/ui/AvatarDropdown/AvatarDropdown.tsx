@@ -9,7 +9,7 @@ import {
 } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar } from '@/shared/ui/Avatar/Avatar';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
 
 interface AvatarDropdownProps {
   className?: string;
@@ -43,7 +43,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
           ? [
             {
               content: t('Админ'),
-              href: RoutePath.admin_panel,
+              href: getRouteAdmin(),
             },
           ]
           : []),
@@ -53,7 +53,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
         },
         {
           content: t('Профиль'),
-          href: RoutePath.profile + authData.id,
+          href: getRouteProfile(authData.id) ,
         },
       ]}
       trigger={<Avatar size={30} src={authData.avatar} />}

@@ -4,7 +4,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { useMemo } from 'react';
 import { getUserAuthData, getUserRoles } from '@/entities/User';
 import { UserRole } from '@/entities/User/model/consts/consts';
-import { RoutePath } from '@/shared/const/router';
+import { getRouteForbidden, getRouteMain } from '@/shared/const/router';
 
 export interface RequireAuthProps {
   children: JSX.Element;
@@ -31,10 +31,10 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
     // trying to go to when they were redirected. This allows us to send them
     // along to that page after they login, which is a nicer user experience
     // than dropping them off on the home page.
-    return <Navigate to={RoutePath.main} state={{ from: location }} replace />;
+    return <Navigate to={getRouteMain()} state={{ from: location }} replace />;
   }
   if (!hasRequiredRoles) {
-    return <Navigate to={RoutePath.forbidden_page} state={{ from: location }} replace />;
+    return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
   }
 
   return children;
