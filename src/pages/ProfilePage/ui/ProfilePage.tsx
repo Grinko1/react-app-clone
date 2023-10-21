@@ -4,7 +4,7 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page/Page';
-import { VStack } from '@/shared/ui/Stack/VStack/VStack';
+import { VStack } from '@/shared/ui/Stack';
 import { EditableProfileCard } from '@/features/editableProfileCard';
 import { useParams } from 'react-router-dom';
 import { profileReducer } from '@/features/editableProfileCard/model/slice/profileSlice';

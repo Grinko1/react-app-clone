@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/shared/ui/Button/Button';
-import { Dropdown } from '@/shared/ui/Popups/components/Dropdown/Dropdown';
+import { Dropdown } from '@/shared/ui/Popups';
 import { Input } from '@/shared/ui/Input/Input';
-import { ListBox } from '@/shared/ui/Popups/components/ListBox/ListBox';
+import { ListBox } from '@/shared/ui/Popups';
 import { Page } from '@/widgets/Page/Page';
 import { StarRating } from '@/shared/ui/StarRating/StarRating';
 import { Rating } from '@/entities/Rating';

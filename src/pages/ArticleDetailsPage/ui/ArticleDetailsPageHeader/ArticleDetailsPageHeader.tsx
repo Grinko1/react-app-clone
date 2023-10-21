@@ -8,7 +8,8 @@ import { getUserAuthData } from '@/entities/User';
 import { getArticleDetailsData } from '@/entities/Article/model/selectors/articleDetails';
 import { getCanEditArticle } from '@/pages/ArticleDetailsPage/model/selectors/article';
 import cls from './ArticleDetailsPageHeader.module.scss';
-import { RoutePath } from '@/app/providers/router/config/routeConfig';
+import { RoutePath } from '@/shared/const/router';
+
 
 interface ArticleDetailsPageHeaderProps {
     className?: string;
