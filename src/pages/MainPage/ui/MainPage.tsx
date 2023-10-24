@@ -39,7 +39,7 @@ const MainPage = () => {
   ];
 
   return (
-    <Page>
+    <Page data-testid={'MainPage'}>
       {t('Главная страница')}
       <Rating title="Как вам статья?" feedbackTitle="Оставьте отзыв" hasFeedback />
       <div> </div>

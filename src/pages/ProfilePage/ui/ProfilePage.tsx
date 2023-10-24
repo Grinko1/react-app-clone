@@ -25,7 +25,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page className={classNames('', {}, [className])}>
+      <Page className={classNames('', {}, [className])}  data-testid={'ProfilePage'}>
         <VStack gap="16" max>
           <EditableProfileCard id={id} />
           <ProfileRating profileId={id ?? ''} />
