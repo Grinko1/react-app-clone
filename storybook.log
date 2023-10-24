@@ -1,0 +1,27 @@
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE could not resolve
+npm ERR! 
+npm ERR! While resolving: eslint-plugin-unused-imports@3.0.0
+npm ERR! Found: @typescript-eslint/eslint-plugin@5.12.1
+npm ERR! node_modules/@typescript-eslint/eslint-plugin
+npm ERR!   dev @typescript-eslint/eslint-plugin@"^5.12.1" from the root project
+npm ERR! 
+npm ERR! Could not resolve dependency:
+npm ERR! peerOptional @typescript-eslint/eslint-plugin@"^6.0.0" from eslint-plugin-unused-imports@3.0.0
+npm ERR! node_modules/eslint-plugin-unused-imports
+npm ERR!   dev eslint-plugin-unused-imports@"^3.0.0" from the root project
+npm ERR! 
+npm ERR! Conflicting peer dependency: @typescript-eslint/eslint-plugin@6.9.0
+npm ERR! node_modules/@typescript-eslint/eslint-plugin
+npm ERR!   peerOptional @typescript-eslint/eslint-plugin@"^6.0.0" from eslint-plugin-unused-imports@3.0.0
+npm ERR!   node_modules/eslint-plugin-unused-imports
+npm ERR!     dev eslint-plugin-unused-imports@"^3.0.0" from the root project
+npm ERR! 
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR! 
+npm ERR! See /Users/nadagrinko/.npm/eresolve-report.txt for a full report.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /Users/nadagrinko/.npm/_logs/2023-10-24T03_54_11_621Z-debug-0.log
