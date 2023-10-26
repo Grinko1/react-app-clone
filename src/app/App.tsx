@@ -12,15 +12,16 @@ function App() {
   const dispatch = useDispatch();
   const inited = useSelector(getUserInited);
 
+
   useEffect(() => {
     dispatch(userActions.initAuthData());
   }, [dispatch]);
 
   return (
     <div className={classNames('app', {}, [theme])}>
-      <Suspense fallback="">
+      <Suspense fallback=''>
         <Navbar />
-        <div className="content-page">
+        <div className='content-page'>
           <Sidebar />
           {inited && <AppRouter />}
         </div>

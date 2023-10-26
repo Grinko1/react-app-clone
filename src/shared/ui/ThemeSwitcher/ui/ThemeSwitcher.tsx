@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Theme, useTheme } from '@/app/providers/ThemeProvider';
 import LightIcon from '@/shared/assets/icons/theme-light.svg';
@@ -11,13 +11,15 @@ interface ThemeSwitcherProps {
 
 export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
   const { theme, toggleTheme } = useTheme();
+  const onToggleTheme = useCallback(() => {
+    toggleTheme(() => console.log('theme action'));
+  }, [toggleTheme]);
 
   return (
     <Button
       theme={ButtonTheme.CLEAR}
       className={classNames('', {}, [className])}
-      onClick={toggleTheme}
-    >
+      onClick={onToggleTheme}>
       {theme === Theme.DARK ? <DarkIcon /> : <LightIcon />}
     </Button>
   );

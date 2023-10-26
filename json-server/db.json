@@ -618,9 +618,14 @@
       "password": "123",
       "roles": ["ADMIN"],
       "avatar": "https://www.w3schools.com/howto/img_avatar.png",
-      "features" :{
-        "isArticleRatingEnabled":true,
-        "isCounterEnabled":true
+      "features": {
+        "isArticleRatingEnabled": true,
+        "isCounterEnabled": true
+      },
+      "jsonSettings": {
+        "theme": "app_dark_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
       }
     },
     {
@@ -629,10 +634,15 @@
       "password": "123",
       "roles": ["USER"],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
-        "features": {
-          "isArticleRatingEnabled": false,
-          "isCounterEnabled": false
-        }
+      "features": {
+        "isArticleRatingEnabled": false,
+        "isCounterEnabled": false
+      },
+      "jsonSettings": {
+        "theme": "app_Light_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      }
     },
     {
       "id": "3",
@@ -640,10 +650,15 @@
       "password": "123",
       "roles": ["MANAGER"],
       "avatar": "https://xakep.ru/wp-content/uploads/2018/05/171485/KuroiSH-hacker.jpg",
-        "features": {
-          "isArticleRatingEnabled": false,
-          "isCounterEnabled": false
-        }
+      "features": {
+        "isArticleRatingEnabled": false,
+        "isCounterEnabled": false
+      },
+      "jsonSettings": {
+        "theme": "app_dark_theme",
+        "isFirstVisit": true,
+        "settingsPageHasBeenOpen": false
+      }
     }
   ],
   "profile": [

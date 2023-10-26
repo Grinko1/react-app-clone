@@ -1,3 +1,5 @@
+export { useJsonSettingsByKey } from './model/selectors/getJsonSettings/getJsonSettings';
+
 export { UserRole } from './model/consts/consts';
 
 export {
@@ -12,3 +14,4 @@ export { getUserInited } from './model/selectors/getUserInited/getUserInited';
 
 export { userReducer, userActions } from './model/slice/userSlice';
 export type { UserSchema, User } from './model/types/user';
+
