@@ -14,6 +14,7 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/articleRating';
+import { getFeatureFlag } from '@/shared/lib/features';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -27,6 +28,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { className } = props;
   const { t } = useTranslation('article-details');
   const { id } = useParams<{ id: string }>();
+  const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled')
 
   if (!id) {
     return (
@@ -41,7 +43,7 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
         <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
-        <ArticleRating articleId={id} />
+        {isArticleRatingEnabled && <ArticleRating articleId={id} />}
         <ArticleRecommendationsList />
         <ArticleDetailsComments id={id} />
       </Page>
