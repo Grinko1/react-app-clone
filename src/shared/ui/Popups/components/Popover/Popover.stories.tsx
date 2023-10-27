@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator';
 import { Popover } from './Popover';
-import { Button } from '@/shared/ui/Button';
+import { Button } from '../../../Button/Button';
 
 export default {
   title: 'shared/Popover',

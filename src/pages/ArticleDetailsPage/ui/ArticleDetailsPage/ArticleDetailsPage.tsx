@@ -14,7 +14,7 @@ import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDet
 import { ArticleRecommendationsList } from '@/features/articleRecommendationsList';
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments';
 import { ArticleRating } from '@/features/articleRating';
-import { getFeatureFlag, toggleFeatures } from '@/shared/lib/features';
+import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/Card/Card';
 
 interface ArticleDetailsPageProps {
@@ -29,7 +29,6 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { className } = props;
   const { t } = useTranslation('article-details');
   const { id } = useParams<{ id: string }>();
-  const isArticleRatingEnabled = getFeatureFlag('isArticleRatingEnabled');
 
   const example = toggleFeatures({
     name: 'isCounterEnabled',
@@ -37,10 +36,11 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
     off: () => 'Turned off',
   });
   const articleRatingCard = toggleFeatures({
-    name:'isArticleRatingEnabled',
-    on:()=><ArticleRating articleId={id || ''}/>,
-    off:()=> <Card>{t('rating will be soon')}</Card>
-  })
+    name: 'isArticleRatingEnabled',
+    on: () => <ArticleRating articleId={id || ''} />,
+    off: () => <Card>{t('rating will be soon')}</Card>,
+  });
+  
   if (!id) {
     return (
       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -55,8 +55,12 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
         {example}
         <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
-        {articleRatingCard}
-        {/* {isArticleRatingEnabled && <ArticleRating articleId={id} />} */}
+
+        <ToggleFeatures
+          feature='isArticleRatingEnabled'
+          on={<ArticleRating articleId={id} />}
+          off={<Card>{t('rating will be soon')}</Card>}
+        />
         <ArticleRecommendationsList />
         <ArticleDetailsComments id={id} />
       </Page>

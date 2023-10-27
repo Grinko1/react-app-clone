@@ -10,7 +10,8 @@ import { getArticleComments } from '../../model/slices/articleDetailsCommentsSli
 import { getArticleCommentsIsLoading } from '../../model/selectors/comments';
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle';
 import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect';
-import { fetchCommentsByArticleId } from '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
+import { fetchCommentsByArticleId } from 
+'@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { Loader } from '@/shared/ui/Loader/Loader';
 
 interface ArticleDetailsCommentsProps {
@@ -25,10 +26,12 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
   const commentsIsLoading = useSelector(getArticleCommentsIsLoading);
 
   useInitialEffect(() => {
+    //@ts-ignore
     dispatch(fetchCommentsByArticleId(id));
   });
   const onSendComment = useCallback(
     (text: string) => {
+        //@ts-ignore
       dispatch(addCommentForArticle(text));
     },
     [dispatch],

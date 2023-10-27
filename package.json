@@ -26,7 +26,8 @@
     "storybook:build": "storybook build -c ./config/storybook",
     "prepare": "husky install",
     "test:e2e": "cypress open",
-    "generate:slice": "node ./scripts/createSlice/index.js"
+    "generate:slice": "node ./scripts/createSlice/index.js",
+    "remove-feature": "ts-node ./scripts/remove-feature.ts"
   },
   "keywords": [],
   "author": "",

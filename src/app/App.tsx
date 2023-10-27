@@ -8,6 +8,8 @@ import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, initAuthData } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/shared/ui/PageLoader/PageLoader';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { MainLayout } from '@/shared/ui/MainLayout/MainLayout';
 
 function App() {
   const { theme } = useTheme();
@@ -18,19 +20,38 @@ function App() {
     dispatch(initAuthData());
   }, [dispatch]);
 
-  if(!inited){
-    return <PageLoader/>
+  if (!inited) {
+    return <PageLoader />;
   }
+
   return (
-    <div className={classNames('app', {}, [theme])}>
-      <Suspense fallback=''>
-        <Navbar />
-        <div className='content-page'>
-          <Sidebar />
-          {inited && <AppRouter />}
+    <ToggleFeatures
+      feature='isAppRedisigned'
+      on={
+        <div className={classNames('app_redesigned', {}, [theme])}>
+          <Suspense fallback=''>
+          <MainLayout
+            content={<AppRouter />}
+            header={<Navbar />}
+            sidebar={<Sidebar />}
+            // eslint-disable-next-line i18next/no-literal-string
+            toolbar={<>...sdfk sndf</>}
+          />
+          </Suspense>
         </div>
-      </Suspense>
-    </div>
+      }
+      off={
+        <div className={classNames('app', {}, [theme])}>
+          <Suspense fallback=''>
+            <Navbar />
+            <div className='content-page'>
+              <Sidebar />
+              {inited && <AppRouter />}
+            </div>
+          </Suspense>
+        </div>
+      }
+    />
   );
 }
 
