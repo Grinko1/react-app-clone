@@ -14,7 +14,6 @@ function App() {
   const dispatch = useAppDispatch();
   const inited = useSelector(getUserInited);
 
-  console.log(inited)
   useEffect(() => {
     dispatch(initAuthData());
   }, [dispatch]);
