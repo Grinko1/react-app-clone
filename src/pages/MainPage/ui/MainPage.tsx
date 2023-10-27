@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/shared/ui/Button/Button';
-import { Dropdown, ListBox } from '@/shared/ui/Popups';
+import { Button } from '@/shared/ui/deprecated/Button/Button';
+import { Dropdown, ListBox } from '@/shared/ui/deprecated/Popups';
 import { Page } from '@/widgets/Page/Page';
 import { Rating } from '@/entities/Rating';
 

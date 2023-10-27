@@ -7,9 +7,9 @@ import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
 import { getUserInited, initAuthData } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
-import { PageLoader } from '@/shared/ui/PageLoader/PageLoader';
+import { PageLoader } from '@/shared/ui/deprecated/PageLoader/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { MainLayout } from '@/shared/ui/MainLayout/MainLayout';
+import { MainLayout } from '@/shared/ui/deprecated/MainLayout/MainLayout';
 
 function App() {
   const { theme } = useTheme();

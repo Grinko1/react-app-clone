@@ -1,7 +1,7 @@
 import React, { memo, Suspense, useCallback } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { RequireAuth } from '@/app/providers/router/ui/RequireAuth';
-import { PageLoader } from '@/shared/ui/PageLoader/PageLoader';
+import { PageLoader } from '@/shared/ui/deprecated/PageLoader/PageLoader';
 import { AppRoutesProps, routeConfig } from '../config/routeConfig';
 
 const AppRouter = () => {
