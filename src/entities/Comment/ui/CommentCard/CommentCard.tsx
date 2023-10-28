@@ -3,7 +3,7 @@ import { classNames } from '@/shared/lib/classNames/classNames';
 import { Avatar } from '@/shared/ui/deprecated/Avatar/Avatar';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
-import { AppLink } from '@/shared/ui/deprecated/AppLink/AppLink';
+import { AppLink } from '@/shared/ui/redesigned/AppLink/AppLink';
 import cls from './CommentCard.module.scss';
 import { Comment } from '../../model/types/comment';
 import { getRouteProfile } from '@/shared/const/router';

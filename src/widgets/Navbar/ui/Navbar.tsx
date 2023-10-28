@@ -15,6 +15,7 @@ import { AvatarDropdown } from '@/features/avatarDropdown';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { ToggleFeatures } from '@/shared/lib/features';
 
+
 interface NavbarProps {
   className?: string;
 }

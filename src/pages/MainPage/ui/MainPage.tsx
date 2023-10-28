@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button } from '@/shared/ui/deprecated/Button/Button';
+import { Button } from '@/shared/ui/redesigned/Button/Button';
 import { Dropdown, ListBox } from '@/shared/ui/deprecated/Popups';
 import { Page } from '@/widgets/Page/Page';
 import { Rating } from '@/entities/Rating';

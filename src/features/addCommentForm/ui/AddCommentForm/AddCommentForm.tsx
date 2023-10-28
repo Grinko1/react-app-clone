@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Input } from '@/shared/ui/deprecated/Input/Input';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button/Button';
+import { Button, ButtonTheme } from '@/shared/ui/redesigned/Button/Button';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice';
