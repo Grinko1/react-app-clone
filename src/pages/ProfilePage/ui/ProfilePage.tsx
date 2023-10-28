@@ -6,7 +6,7 @@ import {
   ReducersList,
 } from '@/shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import { Page } from '@/widgets/Page/Page';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { EditableProfileCard } from '@/features/editableProfileCard';
 import { profileReducer } from '@/features/editableProfileCard/model/slice/profileSlice';
 import { ProfileRating } from '@/features/profileRating';

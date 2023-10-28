@@ -3,7 +3,7 @@ import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Currency } from '../../model/types/currency';
 import { ListBox } from '@/shared/ui/deprecated/Popups';
-import { HStack } from '@/shared/ui/deprecated/Stack';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface CurrencySelectProps {
   className?: string;

@@ -46,7 +46,8 @@ module.exports = {
           'fullscreen',
           'feature',
           'variant',
-          'color'
+          'color',
+          'size',
         ],
       },
     ],

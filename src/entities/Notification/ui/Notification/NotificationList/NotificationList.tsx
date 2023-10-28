@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import cls from './NotificationList.module.scss';
 import { useNotification } from '@/entities/Notification/api/NotificationApi';
-import { VStack } from '@/shared/ui/deprecated/Stack';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 import { NotificationItem } from '../NotificationItem/NotificationItem';
 import { Skeleton } from '@/shared/ui/deprecated/Skeleton/Skeleton';
 

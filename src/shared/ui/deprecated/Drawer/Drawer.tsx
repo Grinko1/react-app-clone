@@ -4,7 +4,7 @@ import React, {
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
-import { Overlay } from '../Overlay/Overlay';
+import { Overlay } from '../../redesigned/Overlay/Overlay';
 import cls from './Drawer.module.scss';
 
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
