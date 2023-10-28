@@ -9,7 +9,7 @@ import { getUserInited, initAuthData } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { PageLoader } from '@/shared/ui/deprecated/PageLoader/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
-import { MainLayout } from '@/shared/ui/redesigned/MainLayout/MainLayout';
+import { MainLayout } from '@/shared/ui/redesigned/Layouts/MainLayout/MainLayout';
 
 function App() {
   const { theme } = useTheme();
