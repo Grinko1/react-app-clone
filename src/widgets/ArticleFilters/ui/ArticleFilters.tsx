@@ -10,6 +10,7 @@ import { useTranslation } from 'react-i18next';
 import { ArticleSortField, ArticleType } from '@/entities/Article';
 import { SortOrder } from '@/shared/types/sort';
 import { Input } from '@/shared/ui/redesigned/Input/Input';
+import SearchIcon from '@/shared/assets/icons/search.svg'
 
 interface ArticleFiltersProps {
   className?: string;
@@ -39,7 +40,7 @@ export const ArticleFilters = memo((props: ArticleFiltersProps) => {
   return (
     <Card className={classNames(cls.ArticleFilters, {}, [className])} padding='24'>
       <VStack gap='32'>
-        <Input onChange={onChangeSearch} value={search} placeholder={t('Поиск')} />
+        <Input onChange={onChangeSearch} value={search} placeholder={t('Поиск')} addonLeft={<SearchIcon/>} />
         <ArticleTypeTabs value={type} onChangeType={onChangeType} className={cls.tabs} />
         <ArticleSortSelector
           order={order}
