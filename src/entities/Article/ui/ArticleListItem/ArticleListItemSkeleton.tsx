@@ -9,29 +9,38 @@ import { toggleFeatures } from '@/shared/lib/features';
 import { Skeleton as SkeletonRedesigned } from '@/shared/ui/redesigned/Skeleton/Skeleton';
 
 interface ArticleListItemSkeletonProps {
-    className?: string;
-    view: ArticleView;
+  className?: string;
+  view: ArticleView;
 }
 
 export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps) => {
   const { className, view } = props;
 
   const Skeleton = toggleFeatures({
-    name:'isAppRedisigned',
-    on:()=>SkeletonRedesigned,
-    off:()=>SkeletonDeprecated
-  })
-    const Card = toggleFeatures({
-    name:'isAppRedisigned',
-    on:()=>CardRedesigned,
-    off:()=>CardDeprecated
-  })
+    name: 'isAppRedisigned',
+    on: () => SkeletonRedesigned,
+    off: () => SkeletonDeprecated,
+  });
+  const Card = toggleFeatures({
+    name: 'isAppRedisigned',
+    on: () => CardRedesigned,
+    off: () => CardDeprecated,
+  });
   if (view === ArticleView.BIG) {
     return (
-      <div className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
+      <div
+        className={classNames(
+          toggleFeatures({
+            name: 'isAppRedisigned',
+            on: () => cls.ArticleList,
+            off: () => cls.ArticleListRedesigned,
+          }),
+          {},
+          [className, cls[view]],
+        )}>
         <Card className={cls.card}>
           <div className={cls.header}>
-            <Skeleton border="50%" height={30} width={30} />
+            <Skeleton border='50%' height={30} width={30} />
             <Skeleton width={150} height={16} className={cls.username} />
             <Skeleton width={150} height={16} className={cls.date} />
           </div>

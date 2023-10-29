@@ -48,6 +48,7 @@ module.exports = {
           'variant',
           'color',
           'size',
+          'wrap',
         ],
       },
     ],

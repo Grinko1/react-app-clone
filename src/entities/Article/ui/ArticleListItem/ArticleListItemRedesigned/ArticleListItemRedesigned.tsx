@@ -31,6 +31,12 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
     </HStack>
   );
 
+  const userInfo = (
+    <>
+      <Avatar size={32} src={article.user.avatar} />
+      <Text text={article.user.username} bold />
+    </>
+  );
   if (view === ArticleView.BIG) {
     const textBlock = article.blocks.find(
       (block) => block.type === ArticleBlockType.TEXT,
@@ -44,31 +50,29 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
         max>
         <VStack max gap='16'>
           <HStack max gap='16'>
-            <Avatar size={32} src={article.user.avatar} />
-            <Text text={article.user.username} bold />
+            {userInfo}
             <Text text={article.createdAt} />
           </HStack>
-              <Text title={article.title} className={cls.title} bold />
-        <Text title={article.subtitle} className={cls.title} size='s' />
-         <AppImage
-          src={article.img}
-          className={cls.img}
-          alt={article.title}
-          fallback={<Skeleton width={'100%'} height={250} />}
-        />
-         {textBlock.paragraphs && <Text text={textBlock.paragraphs.slice(0, 2).join(' ')} className={cls.textBlock}/>}
-         <HStack max justify='between'> 
+          <Text title={article.title} className={cls.title} bold />
+          <Text title={article.subtitle} className={cls.title} size='s' />
+          <AppImage
+            src={article.img}
+            className={cls.img}
+            alt={article.title}
+            fallback={<Skeleton width={'100%'} height={250} />}
+          />
+          {textBlock.paragraphs && (
+            <Text text={textBlock.paragraphs.slice(0, 2).join(' ')} className={cls.textBlock} />
+          )}
+          <HStack max justify='between'>
             <AppLink target={target} to={getRouterArticleDetails(article.id)}>
-            <Button variant='outline'>{t('Читать далее...')}</Button>
-          </AppLink>
+              <Button variant='outline'>{t('Читать далее...')}</Button>
+            </AppLink>
             {views}
-         </HStack>
+          </HStack>
         </VStack>
 
-    
         {/* {types} */}
-       
-
       </Card>
     );
   }
@@ -78,21 +82,25 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
       target={target}
       to={getRouterArticleDetails(article.id)}
       className={classNames(cls.ArticleListItem, {}, [className, cls[view]])}>
-      <Card className={cls.card}>
-        <div className={cls.imageWrapper}>
+      <Card className={cls.card} border='round'>
+
           <AppImage
             src={article.img}
             className={cls.img}
             alt={article.title}
             fallback={<Skeleton width={'200'} height={200} />}
           />
-          <Text text={article.createdAt} className={cls.date} />
-        </div>
-        <div className={cls.infoWrapper}>
-          {types}
-          {views}
-        </div>
-        <Text text={article.title} className={cls.title} />
+          <VStack className={cls.info}>
+            <Text text={article.title} className={cls.title} />
+            <VStack gap='4' max className={cls.footer}>
+              <HStack justify='between' max>
+                <Text text={article.createdAt} className={cls.date} />
+                {views}
+              </HStack>
+              <HStack gap='4'>{userInfo}</HStack>
+            </VStack>
+          </VStack>
+   
       </Card>
     </AppLink>
   );

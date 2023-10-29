@@ -7,6 +7,8 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
 import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
 import { ArticleView } from '@/entities/Article/model/consts/consts';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { HStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleListProps {
   className?: string;
@@ -23,9 +25,7 @@ const getSkeletons = (view: ArticleView) => {
 };
 
 export const ArticleList = memo((props: ArticleListProps) => {
-  const {
-    className, articles, isLoading, view = ArticleView.SMALL, target,
-  } = props;
+  const { className, articles, isLoading, view = ArticleView.SMALL, target } = props;
 
   const { t } = useTranslation();
   const renderArticle = (article: Article) => {
@@ -47,16 +47,25 @@ export const ArticleList = memo((props: ArticleListProps) => {
     );
   }
   return (
-    <div className={classNames(style.ArticleList, {}, [className, style[view]])}>
-      {articles.length ? articles.map(renderArticle) : null}
-      { isLoading && getSkeletons(view)}
-    </div>
+    <ToggleFeatures
+      feature='isAppRedisigned'
+      on={
+        <HStack gap='16' wrap='wrap' className={classNames(style.ArticleListRedesigned, {},[] )}>
+          {articles.length ? articles.map(renderArticle) : null}
+          {isLoading && getSkeletons(view)}
+        </HStack>
+      }
+      off={
+        <div className={classNames(style.ArticleList, {}, [className, style[view]])}>
+          {articles.length ? articles.map(renderArticle) : null}
+          {isLoading && getSkeletons(view)}
+        </div>
+      }
+    />
   );
 });
 
-
-
-//virtual scroll 
+//virtual scroll
 // import { classNames } from 'shared/lib/classNames/classNames';
 // import { useTranslation } from 'react-i18next';
 // import { HTMLAttributeAnchorTarget, memo } from 'react';
