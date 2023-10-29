@@ -54,6 +54,9 @@ export const ArticleList = memo((props: ArticleListProps) => {
   );
 });
 
+
+
+//virtual scroll 
 // import { classNames } from 'shared/lib/classNames/classNames';
 // import { useTranslation } from 'react-i18next';
 // import { HTMLAttributeAnchorTarget, memo } from 'react';
