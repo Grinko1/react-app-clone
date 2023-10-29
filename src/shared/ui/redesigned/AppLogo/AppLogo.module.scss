@@ -1,7 +1,10 @@
 .appLogoWrapper {
   position: relative;
 }
-
+.appLogo{
+  position: relative;
+  z-index: 100;
+}
 .gradientBig {
   position: absolute;
   background: radial-gradient(
