@@ -5,6 +5,10 @@ import { Select, SelectOption } from '@/shared/ui/deprecated/Select/Select';
 import { SortOrder } from '@/shared/types/sort';
 import cls from './ArticleSortSelector.module.scss';
 import { ArticleSortField } from '@/entities/Article/model/consts/consts';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface ArticleSortSelectorProps {
   className?: string;
@@ -65,20 +69,43 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
   );
 
   return (
-    <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
-      <Select<ArticleSortField>
-        options={sortFieldOptions}
-        label={t('Сортировать ПО')}
-        value={sort}
-        onChange={changeSortHandler}
-      />
-      <Select
-        options={orderOptions}
-        label={t('по')}
-        value={order}
-        onChange={changeOrderHandler}
-        className={cls.order}
-      />
-    </div>
+    <ToggleFeatures
+      feature='isAppRedisigned'
+      on={
+        <div className={classNames(cls.ArticleSortSelectorRedesigned, {}, [className])}>
+          <VStack gap='8' align='start'>
+            <Text text={t('Сортировать по:')} />
+            <ListBox
+              items={sortFieldOptions}
+              value={sort}
+              onChange={changeSortHandler}
+            />
+            <ListBox
+              items={orderOptions}
+              value={order}
+              onChange={changeOrderHandler}
+              className={cls.order}
+            />
+          </VStack>
+        </div>
+      }
+      off={
+        <div className={classNames(cls.ArticleSortSelector, {}, [className])}>
+          <Select<ArticleSortField>
+            options={sortFieldOptions}
+            label={t('Сортировать ПО')}
+            value={sort}
+            onChange={changeSortHandler}
+          />
+          <Select
+            options={orderOptions}
+            label={t('по')}
+            value={order}
+            onChange={changeOrderHandler}
+            className={cls.order}
+          />
+        </div>
+      }
+    />
   );
 });

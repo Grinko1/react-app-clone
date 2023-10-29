@@ -17,7 +17,8 @@
     cursor: pointer;
 }
 
-.active {
+.active,
+.selected {
     background: var(--light-bg-redesigned);
 }
 
