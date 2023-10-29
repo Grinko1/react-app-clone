@@ -3,7 +3,9 @@ import { memo, useCallback } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { Country } from '../../model/types/country';
 import { HStack } from '@/shared/ui/redesigned/Stack';
-import { ListBox } from '@/shared/ui/deprecated/Popups';
+import { ListBox as ListBoxDeprecated } from '@/shared/ui/deprecated/Popups';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { ListBox } from '@/shared/ui/redesigned/Popups';
 
 interface CountrySelectProps {
   className?: string;
@@ -21,9 +23,7 @@ const options = [
 ];
 
 export const CountrySelect = memo(
-  ({
-    className, value, onChange, readonly,
-  }: CountrySelectProps) => {
+  ({ className, value, onChange, readonly }: CountrySelectProps) => {
     const { t } = useTranslation();
 
     const onChangeHandler = useCallback(
@@ -34,25 +34,35 @@ export const CountrySelect = memo(
     );
 
     return (
-      <HStack align="center" gap="8">
-        <span>{t('Укажите страну')}</span>
-        <ListBox
-          className={classNames('', {}, [className])}
-          items={options}
-          value={value}
-          onChange={onChangeHandler}
-          readonly={readonly}
-          direction="top right"
-        />
-      </HStack>
-    // <Select
-    //     className={classNames('', {}, [className])}
-    //     label={t('Укажите страну')}
-    //     options={options}
-    //     value={value}
-    //     onChange={onChangeHandler}
-    //     readonly={readonly}
-    // />
+      <ToggleFeatures
+        feature='isAppRedisigned'
+        on={
+          <HStack align='center' gap='8'>
+            <span>{t('Укажите страну')}</span>
+            <ListBox
+              className={classNames('', {}, [className])}
+              items={options}
+              value={value}
+              onChange={onChangeHandler}
+              readonly={readonly}
+              direction='top right'
+            />
+          </HStack>
+        }
+        off={
+          <HStack align='center' gap='8'>
+            <span>{t('Укажите страну')}</span>
+            <ListBoxDeprecated
+              className={classNames('', {}, [className])}
+              items={options}
+              value={value}
+              onChange={onChangeHandler}
+              readonly={readonly}
+              direction='top right'
+            />
+          </HStack>
+        }
+      />
     );
   },
 );
