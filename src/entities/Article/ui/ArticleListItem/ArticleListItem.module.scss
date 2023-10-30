@@ -1,4 +1,5 @@
 .BIG {
+    width: 100%;
     .views {
         margin-left: auto;
     }
@@ -99,5 +100,10 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+    }
+}
+.ArticleListRedesigned {
+    &.BIG {
+        width: 100%;
     }
 }
