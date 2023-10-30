@@ -26,6 +26,9 @@ import {
 } from '../../model/selectors/articleDetails';
 import { ArticleBlock } from '../../model/types/article';
 import { ArticleBlockType } from '@/entities/Article/model/consts/consts';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { StickyContentLayout } from '@/shared/ui/redesigned/Layouts/StickyLayout/StickyLayout';
+import { VStack } from '@/shared/ui/redesigned/Stack';
 
 interface ArticleDetailsProps {
   className?: string;
@@ -67,13 +70,31 @@ export const ArticleDetails = memo((props: ArticleDetailsProps) => {
 
   if (isLoading) {
     content = (
-      <>
-        <Skeleton className={cls.avatar} width={200} height={200} border='50%' />
-        <Skeleton className={cls.title} width={300} height={32} />
-        <Skeleton className={cls.skeleton} width={600} height={24} />
-        <Skeleton className={cls.skeleton} width='100%' height={200} />
-        <Skeleton className={cls.skeleton} width='100%' height={200} />
-      </>
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <StickyContentLayout
+            content={
+              <VStack gap='16' max>
+                <Skeleton className={cls.avatar} width={200} height={200} border='50%' />
+                <Skeleton className={cls.title} width={300} height={32} />
+                <Skeleton className={cls.skeleton} width={600} height={24} />
+                <Skeleton className={cls.skeleton} width='100%' height={200} />
+                <Skeleton className={cls.skeleton} width='100%' height={200} />
+              </VStack>
+            }
+          />
+        }
+        off={
+          <>
+            <Skeleton className={cls.avatar} width={200} height={200} border='50%' />
+            <Skeleton className={cls.title} width={300} height={32} />
+            <Skeleton className={cls.skeleton} width={600} height={24} />
+            <Skeleton className={cls.skeleton} width='100%' height={200} />
+            <Skeleton className={cls.skeleton} width='100%' height={200} />
+          </>
+        }
+      />
     );
   } else if (error) {
     content = <Text align={TextAlign.CENTER} title={t('Произошла ошибка при загрузке статьи.')} />;

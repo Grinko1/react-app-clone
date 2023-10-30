@@ -16,6 +16,10 @@ import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetails
 import { ArticleRating } from '@/features/articleRating';
 import { ToggleFeatures, toggleFeatures } from '@/shared/lib/features';
 import { Card } from '@/shared/ui/deprecated/Card/Card';
+import { StickyContentLayout } from '@/shared/ui/redesigned/Layouts/StickyLayout/StickyLayout';
+import { VStack } from '@/shared/ui/redesigned/Stack';
+import { DetailsContainer } from '../DetailsContainer/DetailsContainer';
+import { AdditionalInfoContainer } from '../AdditionalInfoContainer/AdditionalInfoContainer';
 
 interface ArticleDetailsPageProps {
   className?: string;
@@ -30,17 +34,12 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
   const { t } = useTranslation('article-details');
   const { id } = useParams<{ id: string }>();
 
-  const example = toggleFeatures({
-    name: 'isCounterEnabled',
-    on: () => 'Turned on',
-    off: () => 'Turned off',
-  });
   const articleRatingCard = toggleFeatures({
     name: 'isArticleRatingEnabled',
     on: () => <ArticleRating articleId={id || ''} />,
     off: () => <Card>{t('rating will be soon')}</Card>,
   });
-  
+
   if (!id) {
     return (
       <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
@@ -51,19 +50,38 @@ const ArticleDetailsPage = (props: ArticleDetailsPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
-        {example}
-        <ArticleDetailsPageHeader />
-        <ArticleDetails id={id} />
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <StickyContentLayout
+            content={
+              <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+                <VStack gap='16' max>
+                <DetailsContainer/>
+                  <ArticleRating articleId={id} />
+                  <ArticleRecommendationsList />
+                  <ArticleDetailsComments id={id} />
+                </VStack>
+              </Page>
+            }
+            right={<AdditionalInfoContainer />}
+          />
+        }
+        off={
+          <Page className={classNames(cls.ArticleDetailsPage, {}, [className])}>
+            <ArticleDetailsPageHeader />
+            <ArticleDetails id={id} />
 
-        <ToggleFeatures
-          feature='isArticleRatingEnabled'
-          on={<ArticleRating articleId={id} />}
-          off={<Card>{t('rating will be soon')}</Card>}
-        />
-        <ArticleRecommendationsList />
-        <ArticleDetailsComments id={id} />
-      </Page>
+            <ToggleFeatures
+              feature='isArticleRatingEnabled'
+              on={<ArticleRating articleId={id} />}
+              off={<Card>{t('rating will be soon')}</Card>}
+            />
+            <ArticleRecommendationsList />
+            <ArticleDetailsComments id={id} />
+          </Page>
+        }
+      />
     </DynamicModuleLoader>
   );
 };

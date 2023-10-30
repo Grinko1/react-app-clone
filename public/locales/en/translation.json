@@ -58,5 +58,8 @@
   "Здесь вы можете искать и просматривать статьи на различный темы": "Here you can search and read articles on different topic",
   "Новый": "New",
   "Старый": "Old",
-  "Пользовательские настройки": "Users settings"
+  "Пользовательские настройки": "Users settings",
+    "{{count}} просмотров_zero": "{{count}} views",
+    "{{count}} просмотров_one": "{{count}} view",
+    "{{count}} просмотров_other": "{{count}} views"
 }
