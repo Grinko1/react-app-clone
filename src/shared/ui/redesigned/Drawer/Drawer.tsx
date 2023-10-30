@@ -1,14 +1,13 @@
-import React, {
-  memo, ReactNode, useCallback, useEffect,
-} from 'react';
+import React, { memo, ReactNode, useCallback, useEffect } from 'react';
 import { classNames } from '@/shared/lib/classNames/classNames';
 import { useTheme } from '@/app/providers/ThemeProvider';
 
-import { Overlay } from '../../redesigned/Overlay/Overlay';
+import { Overlay } from '../Overlay/Overlay';
 import cls from './Drawer.module.scss';
 
 import { AnimationProvider, useAnimationLibs } from '@/shared/lib/components/AnimationProvider';
 import { Portal } from '@headlessui/react';
+import { toggleFeatures } from '@/shared/lib/features';
 
 interface DrawerProps {
   className?: string;
@@ -25,9 +24,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
 
   const [{ y }, api] = Spring.useSpring(() => ({ y: height }));
   const { theme } = useTheme();
-  const {
-    className, children, onClose, isOpen, lazy,
-  } = props;
+  const { className, children, onClose, isOpen, lazy } = props;
 
   const openDrawer = useCallback(() => {
     api.start({ y: 0, immediate: false });
@@ -49,9 +46,7 @@ export const DrawerContent = memo((props: DrawerProps) => {
   };
 
   const bind = Gesture.useDrag(
-    ({
-      last, velocity: [, vy], direction: [, dy], movement: [, my], cancel,
-    }) => {
+    ({ last, velocity: [, vy], direction: [, dy], movement: [, my], cancel }) => {
       if (my < -70) cancel();
 
       if (last) {
@@ -80,13 +75,22 @@ export const DrawerContent = memo((props: DrawerProps) => {
 
   return (
     <Portal>
-      <div className={classNames(cls.Drawer, {}, [className, theme, 'app_drawer'])}>
+      <div
+        className={classNames(cls.Drawer, {}, [
+          className,
+          theme,
+          'app_drawer',
+          toggleFeatures({
+            name: 'isAppRedesigned',
+            on: () => cls.modalOld,
+            off: () => cls.modalNew,
+          }),
+        ])}>
         <Overlay onClick={close} />
         <Spring.a.div
           className={cls.sheet}
           style={{ display, bottom: `calc(-100vh + ${height - 100}px)`, y }}
-          {...bind()}
-        >
+          {...bind()}>
           {children}
         </Spring.a.div>
       </div>
