@@ -1,60 +1,91 @@
 import { memo, useState } from 'react';
-import cls from './StarRating.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import StartIcon from '@/shared/assets/icons/star.svg';
+import cls from './StarRating.module.scss';
+import { Icon as IconDeprecated } from '../Icon/Icon';
+import StarIcon from '@/shared/assets/icons/star.svg';
+import { toggleFeatures, ToggleFeatures } from '@/shared/lib/features';
 import { Icon } from '../../redesigned/Icon/Icon';
 
+
 interface StarRatingProps {
-  className?: string;
-  onSelect?: (starCount: number) => void;
-  size?: number;
-  selectedStars?: number;
+    className?: string;
+    onSelect?: (starsCount: number) => void;
+    size?: number;
+    selectedStars?: number;
 }
-const starts = [1, 2, 3, 4, 5];
 
+const stars = [1, 2, 3, 4, 5];
+
+/**
+ * Устарел, используем новые компоненты из папки redesigned
+ * @deprecated
+ */
 export const StarRating = memo((props: StarRatingProps) => {
-  const {
-    className, size = 30, selectedStars = 0, onSelect,
-  } = props;
+    const { className, size = 30, selectedStars = 0, onSelect } = props;
+    const [currentStarsCount, setCurrentStarsCount] = useState(selectedStars);
+    const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
 
-  const [currentStarCount, setCurrentStarCount] = useState(selectedStars);
-  const [isSelected, setIsSelected] = useState(Boolean(selectedStars));
+    const onHover = (starsCount: number) => () => {
+        if (!isSelected) {
+            setCurrentStarsCount(starsCount);
+        }
+    };
 
-  const onHover = (starsCount: number) => () => {
-    if (!isSelected) {
-      setCurrentStarCount(starsCount);
-    }
-  };
-  const onLeave = () => {
-    if (!isSelected) {
-      setCurrentStarCount(0);
-    }
-  };
+    const onLeave = () => {
+        if (!isSelected) {
+            setCurrentStarsCount(0);
+        }
+    };
 
-  const onClick = (starsCount: number) => () => {
-    if (!isSelected) {
-      onSelect?.(starsCount);
-      setCurrentStarCount(starsCount);
-      setIsSelected(true);
-    }
-  };
+    const onClick = (starsCount: number) => () => {
+        if (!isSelected) {
+            onSelect?.(starsCount);
+            setCurrentStarsCount(starsCount);
+            setIsSelected(true);
+        }
+    };
 
-  return (
-    <div className={classNames(cls.StarRating, {}, [className])}>
-      {starts.map((star) => (
-        <Icon
-          Svg={StartIcon}
-          key={star}
-          className={classNames(cls.starIcon, { [cls.selected]: isSelected }, [
-            currentStarCount >= star ? cls.hovered : cls.normal,
-          ])}
-          width={size}
-          height={size}
-          onMouseLeave={onLeave}
-          onMouseEnter={onHover(star)}
-          onClick={onClick(star)}
-        />
-      ))}
-    </div>
-  );
+    return (
+        <div
+            className={classNames(
+                toggleFeatures({
+                    name: 'isAppRedesigned',
+                    off: () => cls.StarRating,
+                    on: () => cls.StarRatingRedesigned,
+                }),
+                {},
+                [className],
+            )}
+        >
+            {stars.map((starNumber) => {
+                const commonProps = {
+                    className: classNames(
+                        cls.starIcon,
+                        { [cls.selected]: isSelected },
+                        [
+                            currentStarsCount >= starNumber
+                                ? cls.hovered
+                                : cls.normal,
+                        ],
+                    ),
+                    Svg: StarIcon,
+                    key: starNumber,
+                    width: size,
+                    height: size,
+                    onMouseLeave: onLeave,
+                    onMouseEnter: onHover(starNumber),
+                    onClick: onClick(starNumber),
+                    'data-testid': `StarRating.${starNumber}`,
+                    'data-selected': currentStarsCount >= starNumber,
+                };
+                return (
+                    <ToggleFeatures
+                        feature="isAppRedesigned"
+                        on={<Icon clickable={!isSelected} {...commonProps} />}
+                        off={<IconDeprecated {...commonProps} />}
+                    />
+                );
+            })}
+        </div>
+    );
 });

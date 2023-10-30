@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import cls from './ArticleDetailsComments.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Text, TextSize } from '@/shared/ui/deprecated/Text/Text';
+import { Text as TextDeprecated, TextSize } from '@/shared/ui/deprecated/Text/Text';
 import AddCommentForm from '@/features/addCommentForm/ui/AddCommentForm/AddCommentForm';
 import { CommentList } from '@/entities/Comment';
 import { getArticleComments } from '../../model/slices/articleDetailsCommentsSlice';
@@ -13,6 +13,8 @@ import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitial
 import { fetchCommentsByArticleId } from 
 '@/pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId';
 import { Loader } from '@/shared/ui/deprecated/Loader/Loader';
+import { ToggleFeatures } from '@/shared/lib/features';
+import { Text } from '@/shared/ui/redesigned/Text';
 
 interface ArticleDetailsCommentsProps {
   className?: string;
@@ -31,7 +33,7 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
   });
   const onSendComment = useCallback(
     (text: string) => {
-        //@ts-ignore
+      //@ts-ignore
       dispatch(addCommentForArticle(text));
     },
     [dispatch],
@@ -39,7 +41,14 @@ export const ArticleDetailsComments = memo(({ className, id }: ArticleDetailsCom
 
   return (
     <div className={classNames(cls.ArticleDetailsComments, {}, [className])}>
-      <Text size={TextSize.L} className={cls.commentTitle} title={t('Комментарии')} />
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={<Text size='l' className={cls.commentTitle} title={t('Комментарии')} />}
+        off={
+          <TextDeprecated size={TextSize.L} className={cls.commentTitle} title={t('Комментарии')} />
+        }
+      />
+
       <Suspense fallback={<Loader />}>
         <AddCommentForm onSendComment={onSendComment} />
       </Suspense>
