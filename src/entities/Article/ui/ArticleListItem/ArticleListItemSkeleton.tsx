@@ -17,17 +17,17 @@ export const ArticleListItemSkeleton = memo((props: ArticleListItemSkeletonProps
   const { className, view } = props;
 
   const Skeleton = toggleFeatures({
-    name: 'isAppRedisigned',
+    name: 'isAppRedesigned',
     on: () => SkeletonRedesigned,
     off: () => SkeletonDeprecated,
   });
   const Card = toggleFeatures({
-    name: 'isAppRedisigned',
+    name: 'isAppRedesigned',
     on: () => CardRedesigned,
     off: () => CardDeprecated,
   });
   const mainClass = toggleFeatures({
-    name: 'isAppRedisigned',
+    name: 'isAppRedesigned',
     on: () => cls.ArticleList,
     off: () => cls.ArticleListRedesigned,
   });

@@ -24,7 +24,7 @@ interface ProfileCardProps {
 export const ProfileCard = (props: ProfileCardProps) => {
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={<ProfileCardRedesigned {...props} />}
       off={<ProfileCardDeprecated {...props} />}
     />

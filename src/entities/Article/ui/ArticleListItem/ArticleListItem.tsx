@@ -16,7 +16,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   return(
     <ToggleFeatures
-    feature='isAppRedisigned'
+    feature='isAppRedesigned'
     on={<ArticleListItemRedesigned {...props}/>}
     off={<ArticleListItemDeprecated {...props}/>}
     />

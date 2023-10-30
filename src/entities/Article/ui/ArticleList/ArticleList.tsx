@@ -48,7 +48,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
   }
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={
         <HStack gap='16' wrap='wrap' className={classNames(style.ArticleListRedesigned, {},[] )}>
           {articles.length ? articles.map(renderArticle) : null}

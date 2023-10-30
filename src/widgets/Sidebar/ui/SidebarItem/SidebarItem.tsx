@@ -26,7 +26,7 @@ export const SidebarItem = memo(({ item, collapsed }: SidebarItemProps) => {
 
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       off={
         <AppLinkDeprecated
           theme={AppLinkTheme.SECONDARY}

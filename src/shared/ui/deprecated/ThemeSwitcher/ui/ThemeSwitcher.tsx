@@ -27,7 +27,7 @@ export const ThemeSwitcher = memo(({ className }: ThemeSwitcherProps) => {
 
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={<Icon Svg={ThemeIcon} clickable onClick={onToggleTheme} />}
       off={
         <Button

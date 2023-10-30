@@ -1,4 +1,4 @@
-import { Fragment, ReactNode } from 'react';
+import { Fragment, ReactNode, useMemo } from 'react';
 import { Listbox as HListBox } from '@headlessui/react';
 import cls from './ListBox.module.scss';
 import { classNames } from '@/shared/lib/classNames/classNames';
@@ -34,7 +34,9 @@ export function ListBox(props: ListBoxProps) {
   } = props;
 
   const optionClasses = [mapDirectionClass[direction]];
-
+  const selectedItem = useMemo(() => {
+    return items?.find((item) => item.value === value);
+  }, [items, value]);
   return (
     <HListBox
       value={value}
@@ -44,7 +46,9 @@ export function ListBox(props: ListBoxProps) {
       disabled={readonly}
     >
       <HListBox.Button className={popupCls.trigger} as="div">
-        <Button disabled={readonly}>{value ?? defaultValue}</Button>
+        <Button disabled={readonly}>
+           {selectedItem?.content ?? defaultValue}
+          </Button>
       </HListBox.Button>
       <HListBox.Options className={classNames(cls.options, {}, optionClasses)}>
         {items?.map((item) => (

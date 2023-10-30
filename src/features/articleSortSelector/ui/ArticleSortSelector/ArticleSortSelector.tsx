@@ -70,7 +70,7 @@ export const ArticleSortSelector = memo((props: ArticleSortSelectorProps) => {
 
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={
         <div className={classNames(cls.ArticleSortSelectorRedesigned, {}, [className])}>
           <VStack gap='8' align='start'>

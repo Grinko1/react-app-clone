@@ -9,7 +9,21 @@ import { ArticleEditPage } from '@/pages/ArticleEditPage';
 import { AdminPanelPage } from '@/pages/AdminPanelPage';
 import { ForbiddenPage } from '@/pages/ForbiddenPage';
 import { UserRole } from '@/entities/User';
-import { AppRoutes, getRouteAbout, getRouteAdmin, getRouteArticleCreate, getRouteArticles, getRouteArticlesEdit, getRouteForbidden, getRouteMain, getRouteNotFound, getRouteProfile, getRouterArticleDetails } from '@/shared/const/router';
+import {
+  AppRoutes,
+  getRouteAbout,
+  getRouteAdmin,
+  getRouteArticleCreate,
+  getRouteArticles,
+  getRouteArticlesEdit,
+  getRouteForbidden,
+  getRouteMain,
+  getRouteNotFound,
+  getRouteProfile,
+  getRouteSettings,
+  getRouterArticleDetails,
+} from '@/shared/const/router';
+import { SettingsPage } from '@/pages/SettingsPage';
 
 export type AppRoutesProps = RouteProps & {
   authOnly?: boolean;
@@ -34,13 +48,18 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     element: <ProfilePage />,
     authOnly: true,
   },
+   [AppRoutes.SETTINGS_PAGE]: {
+    path: getRouteSettings(),
+    element: <SettingsPage />,
+    authOnly: true,
+  },
   [AppRoutes.ARTICLES]: {
     path: getRouteArticles(),
     element: <ArticlesPage />,
     authOnly: true,
   },
   [AppRoutes.ADMIN_PANEL]: {
-    path:  getRouteAdmin(),
+    path: getRouteAdmin(),
     element: <AdminPanelPage />,
     authOnly: true,
     roles: [UserRole.ADMIN, UserRole.ADMIN],

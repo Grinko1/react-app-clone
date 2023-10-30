@@ -35,7 +35,7 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
 
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       off={
         <menu
           data-testid='sidebar'

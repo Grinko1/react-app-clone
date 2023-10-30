@@ -47,7 +47,7 @@ export const ArticleTypeTabs = memo((props: ArticleTypeTabsProps) => {
 
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={
         <Tabs
           tabs={typeTabs}

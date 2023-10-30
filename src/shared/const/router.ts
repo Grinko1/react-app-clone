@@ -8,6 +8,7 @@ export enum AppRoutes {
   ARTICLE_EDIT = 'article_edit',
   ADMIN_PANEL = 'admin_panel',
   FORBIDDEN_PAGE = 'forbidden_page',
+  SETTINGS_PAGE= 'settings_page',
   // last
   NOT_FOUND = 'not_found',
 }
@@ -20,6 +21,7 @@ export const getRouteArticleCreate = () => '/articles/new';
 export const getRouteArticlesEdit = (id: string) => `/articles/${id}/edit`;
 export const getRouteAdmin = () => '/admin';
 export const getRouteForbidden = () => '/forbidden';
+export const getRouteSettings = () => '/settings';
 export const getRouteNotFound = () => '*';
 
 
@@ -33,6 +35,7 @@ export const getRouteNotFound = () => '*';
   [AppRoutes.ARTICLE_EDIT]: getRouteArticlesEdit(':id'),
   [AppRoutes.ADMIN_PANEL]: getRouteAdmin(),
   [AppRoutes.FORBIDDEN_PAGE]:getRouteForbidden(),
+  [AppRoutes.SETTINGS_PAGE]:getRouteSettings(),
   // последний
   [AppRoutes.NOT_FOUND]: getRouteNotFound(),
 };

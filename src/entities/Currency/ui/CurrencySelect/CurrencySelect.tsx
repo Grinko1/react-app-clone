@@ -33,7 +33,7 @@ export const CurrencySelect = memo(
 
     return (
       <ToggleFeatures
-        feature='isAppRedisigned'
+        feature='isAppRedesigned'
         on={
           <HStack align='center' gap='8'>
             <span>{t('Укажите валюту')}</span>

@@ -35,7 +35,7 @@ export const CountrySelect = memo(
 
     return (
       <ToggleFeatures
-        feature='isAppRedisigned'
+        feature='isAppRedesigned'
         on={
           <HStack align='center' gap='8'>
             <span>{t('Укажите страну')}</span>

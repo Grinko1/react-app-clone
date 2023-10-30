@@ -7,7 +7,7 @@ import { Dropdown as DropdownDeprecated } from '@/shared/ui/deprecated/Popups';
 import { getUserAuthData, isUserAdmin, isUserManager, userActions } from '@/entities/User';
 import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { Avatar as AvatarDeprecated } from '@/shared/ui/deprecated/Avatar/Avatar';
-import { getRouteAdmin, getRouteProfile } from '@/shared/const/router';
+import { getRouteAdmin, getRouteProfile, getRouteSettings } from '@/shared/const/router';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { Dropdown } from '@/shared/ui/redesigned/Popups';
 import { Avatar } from '@/shared/ui/redesigned/Avatar/Avatar';
@@ -52,10 +52,14 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
       content: t('Профиль'),
       href: getRouteProfile(authData.id),
     },
+    {
+      content: t('Настройки'),
+      href: getRouteSettings(),
+    },
   ];
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={
         <Dropdown
           className={classNames(cls.AvatarDropdown, {}, [className])}
@@ -69,7 +73,7 @@ export const AvatarDropdown = memo((props: AvatarDropdownProps) => {
           className={classNames(cls.AvatarDropdown, {}, [className])}
           direction='bottom left'
           items={items}
-          trigger={<AvatarDeprecated  size={30} fallbackInverted src={authData.avatar} />}
+          trigger={<AvatarDeprecated size={30} fallbackInverted src={authData.avatar} />}
         />
       }
     />

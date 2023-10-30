@@ -23,7 +23,7 @@ const viewTypes = [
   {
     view: ArticleView.SMALL,
     icon: toggleFeatures({
-      name: 'isAppRedisigned',
+      name: 'isAppRedesigned',
       on: () => TiledIconDeprecated,
       off: () => TiledIcon,
     }),
@@ -31,7 +31,7 @@ const viewTypes = [
   {
     view: ArticleView.BIG,
     icon: toggleFeatures({
-      name: 'isAppRedisigned',
+      name: 'isAppRedesigned',
       on: () => ListIcon,
       off: () => ListIconDeprecated,
     }),
@@ -47,7 +47,7 @@ export const ArticleViewSelector = memo((props: ArticleViewSelectorProps) => {
 
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={
         <Card padding='8' border='round' className={classNames(cls.ArticleViewSelectorRedesigned, {}, [className])}>
           <HStack gap='8'>

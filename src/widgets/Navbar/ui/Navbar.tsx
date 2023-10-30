@@ -36,7 +36,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   if (authData) {
     return (
       <ToggleFeatures
-        feature='isAppRedisigned'
+        feature='isAppRedesigned'
         on={
           <header className={classNames(cls.NavbarRedesigned, {}, [className])}>
           
@@ -67,7 +67,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
 
   return (
     <ToggleFeatures
-      feature='isAppRedisigned'
+      feature='isAppRedesigned'
       on={
         <header className={classNames(cls.Navbar, {}, [className])}>
           <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={onShowModal}>
