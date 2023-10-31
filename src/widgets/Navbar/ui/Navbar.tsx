@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import React, { memo, useCallback, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { Button, ButtonTheme } from '@/shared/ui/deprecated/Button/Button';
+import { Button as ButtonDeprecated, ButtonTheme } from '@/shared/ui/deprecated/Button/Button';
 import { LoginModal } from '@/features/AuthByUsername';
 import { getUserAuthData } from '@/entities/User';
 import { Text, TextTheme } from '@/shared/ui/deprecated/Text';
@@ -14,6 +14,7 @@ import { NotificationButton } from '@/features/notificationButton';
 import { AvatarDropdown } from '@/features/avatarDropdown';
 import { getRouteArticleCreate } from '@/shared/const/router';
 import { ToggleFeatures } from '@/shared/lib/features';
+import { Button } from '@/shared/ui/redesigned/Button/Button';
 
 
 interface NavbarProps {
@@ -69,8 +70,8 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     <ToggleFeatures
       feature='isAppRedesigned'
       on={
-        <header className={classNames(cls.Navbar, {}, [className])}>
-          <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={onShowModal}>
+        <header className={classNames(cls.NavbarRedesigned, {}, [className])}>
+          <Button variant='clear' className={cls.links} onClick={onShowModal}>
             {t('Войти')}
           </Button>
           {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
@@ -78,9 +79,9 @@ export const Navbar = memo(({ className }: NavbarProps) => {
       }
       off={
         <header className={classNames(cls.Navbar, {}, [className])}>
-          <Button theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={onShowModal}>
+          <ButtonDeprecated theme={ButtonTheme.CLEAR_INVERTED} className={cls.links} onClick={onShowModal}>
             {t('Войти')}
-          </Button>
+          </ButtonDeprecated>
           {isAuthModal && <LoginModal isOpen={isAuthModal} onClose={onCloseModal} />}
         </header>
       }

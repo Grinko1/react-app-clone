@@ -4,7 +4,7 @@ import cls from './Card.module.scss';
 
 export type CardVariant =  'ligth ' |'normal' | 'outlined' ;
 export type CardPadding = '0' | '8' | '16' | '24';
-export type CardBorder = 'round' | 'default'
+export type CardBorder = 'round' | 'default' | 'partial_round'
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;

@@ -676,7 +676,7 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_dark_theme",
+        "theme": "app_light_theme",
         "isFirstVisit": true,
         "settingsPageHasBeenOpen": false,
         "isArticlesPageWasOpen": true
@@ -809,6 +809,12 @@
       "rate": 5,
       "feedback": "kjsbfjhbd",
       "id": "SOz_coW"
+    },
+    {
+      "userId": "2",
+      "profileId": "2",
+      "rate": 4,
+      "id": "cwNCHmb"
     }
   ],
   "profile-ratings": [

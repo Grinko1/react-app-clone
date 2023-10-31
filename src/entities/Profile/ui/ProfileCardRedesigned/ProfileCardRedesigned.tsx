@@ -49,7 +49,7 @@ export const ProfileCardRedesigned = (props: ProfileCardProps) => {
 
   if (isLoading) {
     return (
-      <Card padding='24' max>
+      <Card padding='24' max border='partial_round'>
         <VStack gap='32'>
           <HStack max justify='center'>
             <Skeleton border='100%' width={128} height={128} />
@@ -95,7 +95,7 @@ export const ProfileCardRedesigned = (props: ProfileCardProps) => {
   };
 
   return (
-    <Card max className={classNames(cls.ProfileCardRedesigned, {}, [className])}>
+    <Card max border='partial_round' padding='24' className={classNames(cls.ProfileCardRedesigned, {}, [className])}>
       <VStack gap='32'>
         {data?.avatar && (
           <HStack justify='center' max className={cls.avatarWrapper}>
