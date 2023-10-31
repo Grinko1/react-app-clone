@@ -90,7 +90,7 @@ export const ArticleListItemRedesigned = memo((props: ArticleListItemProps) => {
           fallback={<Skeleton width={'100%'} height={200} />}
         />
         <VStack className={cls.info}>
-          <Text text={article.title} className={cls.title} />
+          <Text text={article.title} className={cls.title} bold />
           <VStack gap='4' max className={cls.footer}>
             <HStack justify='between' max>
               <Text text={article.createdAt} className={cls.date} />

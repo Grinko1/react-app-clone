@@ -1,7 +1,7 @@
 .SMALL {
   .card {
     width: 240px;
-    height: 350px;
+    height: 270px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -17,7 +17,7 @@
 
   .info {
     padding: 8px 8px 16px 8px;
-    height: 100%;
+    height: auto;
   }
 
   .footer {
