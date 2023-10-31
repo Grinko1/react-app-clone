@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { getUserAuthData } from '@/entities/User';
 import { Text } from '@/shared/ui/deprecated/Text';
 import { HStack } from '@/shared/ui/redesigned/Stack';
+import { useForceUpdate } from '@/shared/lib/render/forceUpdate';
 
 interface UiDesignSwitcherProps {
   className?: string;
@@ -20,7 +21,7 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
   const dispatch = useAppDispatch();
   const isAppRedesigned = getFeatureFlag('isAppRedesigned');
   const authData = useSelector(getUserAuthData);
-
+  const forceUpdate = useForceUpdate();
   const items = [
     { content: t('Новый'), value: 'new' },
     { content: t('Старый'), value: 'old' },
@@ -36,6 +37,7 @@ export const UiDesignSwitcher = memo((props: UiDesignSwitcherProps) => {
           },
         }),
       );
+      forceUpdate()
     }
   };
   return (

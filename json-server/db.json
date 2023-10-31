@@ -676,9 +676,6 @@
         "isAppRedesigned": true
       },
       "jsonSettings": {
-        "theme": "app_light_theme",
-        "isFirstVisit": true,
-        "settingsPageHasBeenOpen": false,
         "isArticlesPageWasOpen": true
       }
     },
