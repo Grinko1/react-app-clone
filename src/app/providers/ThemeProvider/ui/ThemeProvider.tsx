@@ -1,19 +1,20 @@
 import { useJsonSettings } from '@/entities/User/model/selectors/getJsonSettings/getJsonSettings';
 import React, { ReactNode, useEffect, useMemo, useState } from 'react';
-import { Theme, ThemeContext } from '../lib/ThemeContext';
+import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from '../lib/ThemeContext';
 
 interface ThemeProviderProps {
   initialTheme?: Theme;
   children: ReactNode;
 }
 
+const fallbackTheme= localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme
+
 const ThemeProvider = (props: ThemeProviderProps) => {
   const { initialTheme, children } = props;
   const { theme: defaultTheme } = useJsonSettings();
   const [isThemeInited, setThemeInited] = useState(false);
 
-  const [theme, setTheme] = useState<Theme>(initialTheme || defaultTheme || Theme.LIGHT);
-
+  const [theme, setTheme] = useState<Theme>(initialTheme || fallbackTheme || Theme.LIGHT);
   useEffect(() => {
     if (!isThemeInited && defaultTheme) {
       setTheme(defaultTheme);
@@ -23,6 +24,7 @@ const ThemeProvider = (props: ThemeProviderProps) => {
 
   useEffect(() => {
     document.body.className= theme;
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, theme)
   }, [theme]);
   const defaultProps = useMemo(
     () => ({

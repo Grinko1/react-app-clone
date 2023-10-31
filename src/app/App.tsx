@@ -10,6 +10,7 @@ import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch
 import { PageLoader } from '@/shared/ui/deprecated/PageLoader/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/ui/redesigned/Layouts/MainLayout/MainLayout';
+import { AppLoaderLayout } from '@/shared/ui/redesigned/Layouts/AppLoaderLayout/AppLoaderLayout';
 
 function App() {
   const { theme } = useTheme();
@@ -17,11 +18,24 @@ function App() {
   const inited = useSelector(getUserInited);
 
   useEffect(() => {
-    dispatch(initAuthData());
-  }, [dispatch]);
+    if (!inited) {
+      dispatch(initAuthData());
+    }
+  }, [dispatch, inited]);
+
 
   if (!inited) {
-    return <PageLoader />;
+    return (
+      <ToggleFeatures
+        feature='isAppRedesigned'
+        on={
+          <div className={classNames('app_redesigned', {}, [theme])}>
+            <AppLoaderLayout />
+          </div>
+        }
+        off={<PageLoader />}
+      />
+    );
   }
 
   return (
@@ -30,13 +44,12 @@ function App() {
       on={
         <div id='app' className={classNames('app_redesigned', {}, [theme])}>
           <Suspense fallback=''>
-          <MainLayout
-            content={<AppRouter />}
-            header={<Navbar />}
-            sidebar={<Sidebar />}
-            // eslint-disable-next-line i18next/no-literal-string
-            toolbar={<>...sdfk sndf</>}
-          />
+            <MainLayout
+              content={<AppRouter />}
+              header={<Navbar />}
+              sidebar={<Sidebar />}
+              toolbar={<>...</>}
+            />
           </Suspense>
         </div>
       }
@@ -46,7 +59,7 @@ function App() {
             <Navbar />
             <div className='content-page'>
               <Sidebar />
-              {inited && <AppRouter />}
+              <AppRouter />
             </div>
           </Suspense>
         </div>
