@@ -1,7 +1,7 @@
 import React, { Suspense, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { classNames } from '@/shared/lib/classNames/classNames';
-import { useTheme } from '@/app/providers/ThemeProvider';
+import {  useTheme } from '@/app/providers/ThemeProvider';
 import { AppRouter } from '@/app/providers/router';
 import { Navbar } from '@/widgets/Navbar';
 import { Sidebar } from '@/widgets/Sidebar';
@@ -12,6 +12,7 @@ import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/ui/redesigned/Layouts/MainLayout/MainLayout';
 import { AppLoaderLayout } from '@/shared/ui/redesigned/Layouts/AppLoaderLayout/AppLoaderLayout';
 import { useAppToolbar } from './lib/useAppToolbar';
+// import { useJsonSettings } from '@/entities/User/model/selectors/getJsonSettings/getJsonSettings';
 
 function App() {
   const { theme } = useTheme();
@@ -69,4 +70,12 @@ function App() {
   );
 }
 
+// const withTheme = (Component: React.ComponentType) => {
+//   const { theme: defaultTheme } = useJsonSettings();
+//   return () => {
+//     <ThemeProvider initialTheme={defaultTheme}>
+//       <Component />
+//     </ThemeProvider>;
+//   };
+// };
 export default App;
