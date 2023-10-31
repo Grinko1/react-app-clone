@@ -11,18 +11,19 @@ import { PageLoader } from '@/shared/ui/deprecated/PageLoader/PageLoader';
 import { ToggleFeatures } from '@/shared/lib/features';
 import { MainLayout } from '@/shared/ui/redesigned/Layouts/MainLayout/MainLayout';
 import { AppLoaderLayout } from '@/shared/ui/redesigned/Layouts/AppLoaderLayout/AppLoaderLayout';
+import { useAppToolbar } from './lib/useAppToolbar';
 
 function App() {
   const { theme } = useTheme();
   const dispatch = useAppDispatch();
   const inited = useSelector(getUserInited);
+  const toolbar = useAppToolbar();
 
   useEffect(() => {
     if (!inited) {
       dispatch(initAuthData());
     }
   }, [dispatch, inited]);
-
 
   if (!inited) {
     return (
@@ -48,7 +49,7 @@ function App() {
               content={<AppRouter />}
               header={<Navbar />}
               sidebar={<Sidebar />}
-              toolbar={<>...</>}
+              toolbar={toolbar}
             />
           </Suspense>
         </div>

@@ -8,7 +8,7 @@ export enum AppRoutes {
   ARTICLE_EDIT = 'article_edit',
   ADMIN_PANEL = 'admin_panel',
   FORBIDDEN_PAGE = 'forbidden_page',
-  SETTINGS_PAGE= 'settings_page',
+  SETTINGS_PAGE = 'settings_page',
   // last
   NOT_FOUND = 'not_found',
 }
@@ -24,8 +24,20 @@ export const getRouteForbidden = () => '/forbidden';
 export const getRouteSettings = () => '/settings';
 export const getRouteNotFound = () => '*';
 
+export const AppRouteByPathPattern: Record<string, AppRoutes> = {
+  [getRouteMain()]: AppRoutes.MAIN,
+  [getRouteAbout()]: AppRoutes.ABOUT,
+  [getRouteProfile(':id')]: AppRoutes.PROFILE,
+  [getRouterArticleDetails(':id')]: AppRoutes.ARTICLE_DETAILS,
+  [getRouteArticles()]: AppRoutes.ARTICLES,
+  [getRouteArticleCreate()]: AppRoutes.ARTICLE_CREATE,
+  [getRouteArticlesEdit(':id')]: AppRoutes.ARTICLE_EDIT,
+  [getRouteAdmin()]: AppRoutes.ADMIN_PANEL,
+  [getRouteForbidden()]: AppRoutes.FORBIDDEN_PAGE,
+  [getRouteSettings()]: AppRoutes.SETTINGS_PAGE,
+};
 
- const RoutePath: Record<AppRoutes, string> = {
+const RoutePath: Record<AppRoutes, string> = {
   [AppRoutes.MAIN]: getRouteMain(),
   [AppRoutes.ABOUT]: getRouteAbout(),
   [AppRoutes.PROFILE]: getRouteProfile(':id'), // + :id
@@ -34,8 +46,8 @@ export const getRouteNotFound = () => '*';
   [AppRoutes.ARTICLE_CREATE]: getRouteArticleCreate(),
   [AppRoutes.ARTICLE_EDIT]: getRouteArticlesEdit(':id'),
   [AppRoutes.ADMIN_PANEL]: getRouteAdmin(),
-  [AppRoutes.FORBIDDEN_PAGE]:getRouteForbidden(),
-  [AppRoutes.SETTINGS_PAGE]:getRouteSettings(),
+  [AppRoutes.FORBIDDEN_PAGE]: getRouteForbidden(),
+  [AppRoutes.SETTINGS_PAGE]: getRouteSettings(),
   // последний
   [AppRoutes.NOT_FOUND]: getRouteNotFound(),
 };
